@@ -36,6 +36,8 @@ group :development, :test do
   gem 'cucumber', '2.0.0'
   gem 'cucumber-sinatra', '0.5.0'
   gem 'capybara', '2.4.4'
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
 
   gem 'rspec', '3.3.0'
   gem 'rspec-autotest', '1.0.0'
