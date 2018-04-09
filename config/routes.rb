@@ -1,7 +1,7 @@
 Myapp::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
-  root to: 'auth#login_2'
+  root to: 'auth#login'
 
   # Auth routes
   get "auth/login"
@@ -25,6 +25,7 @@ Myapp::Application.routes.draw do
   get "dashboards/dashboard_3"
   get "dashboards/dashboard_4"
   get "dashboards/dashboard_4_1"
+  get "dashboards/student_org_dashboard"
 
   get "layoutsoptions/index"
   get "layoutsoptions/off_canvas"

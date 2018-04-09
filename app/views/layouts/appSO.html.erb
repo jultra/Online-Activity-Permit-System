@@ -18,31 +18,29 @@
 
 
 </head>
-<body class="canvas-menu">
+<body>
+
+<!-- Skin configuration box -->
+<%= render 'layouts/skinconfig' %>
 
     <!-- Wrapper-->
     <div id="wrapper" class="<%= params[:controller] %>.<%= params[:action] %>">
 
         <!-- Navigation -->
-        <%= render 'layouts/navigationoffcanvas' %>
+        <%= render 'layouts/navSO' %>
 
         <!-- Page wraper -->
         <div id="page-wrapper" class="gray-bg <%= @extra_class %>">
 
             <!-- Page wrapper -->
-            <%= render 'layouts/topnavbar' %>
+            <%= render 'layouts/topnavSO' %>
 
             <!-- Main view  -->
             <%= yield %>
 
-            <!-- Footer -->
-            <%= render 'layouts/footer' %>
-
         </div>
         <!-- End page wrapper-->
 
-        <!-- Right sidebar -->
-        <%= render 'layouts/rightsidebar' %>
 
     </div>
     <!-- End wrapper-->
@@ -53,13 +51,6 @@
     <!-- Include javascript per-view -->
     <!-- For demo purpose we include javascript in view but you can easily start SeedProject and organize it with Rails asset pipeline as you want -->
     <%= yield :javascript %>
-
-    <script>
-        $('body.canvas-menu .sidebar-collapse').slimScroll({
-            height: '100%',
-            railOpacity: 0.9
-        });
-    </script>
 
 </body>
 </html>

@@ -16,4 +16,8 @@ class DashboardsController < ApplicationController
   def dashboard_4_1
   end
 
+  def student_org_dashboard
+    render :layout => "appSO"
+  end
+
 end
