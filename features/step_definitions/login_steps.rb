@@ -11,7 +11,7 @@ Then /^I should see (.+)$/ do |page_name|
     visit path_to(page_name)
 end
 
-When /^I click 'Login'$/ do
-    click_button("Login")
+When /^(?:I )click (.+)$/ do |button|
+    visit buttons(button)
 end
 
