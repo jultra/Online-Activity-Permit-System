@@ -1,5 +1,4 @@
 Feature: See Activity Permits
-
     In order to see the list of all activity permits
     As a Student Org
     I should be able to see all pending permits that i have submitted

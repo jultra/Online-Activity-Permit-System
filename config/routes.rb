@@ -126,5 +126,6 @@ Myapp::Application.routes.draw do
   get "apply/approved"
   get "apply/rejected"
   get "calendar/calendar"
+  get "calendar/as"
 
 end

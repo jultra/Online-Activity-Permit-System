@@ -28,6 +28,9 @@ module NavigationHelpers
         when /Forgot password/
             'auth/forgot_password'
 
+        when /as/
+            'as'
+
         else
             raise "Can't find mapping"
         end
