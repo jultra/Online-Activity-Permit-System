@@ -120,4 +120,12 @@ Myapp::Application.routes.draw do
 
   get "landing/index"
 
+  # my Routtes
+  get "apply/apply"
+  get "apply/pending"
+  get "apply/approved"
+  get "apply/rejected"
+  get "calendar/calendar"
+  get "calendar/as"
+
 end
