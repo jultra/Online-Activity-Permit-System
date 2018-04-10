@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
+ruby '2.3.6'
+gem 'rails', '4.2.6'
 gem 'bootstrap-sass', '3.3.0.0'
 gem 'font-awesome-rails', '4.3.0.0'
 
@@ -52,7 +53,7 @@ group :development, :test do
   gem 'simplecov', '0.10.0'
   gem 'webmock', '1.21.0'
   gem 'ZenTest', '4.11.0'
-  
+
   gem 'webrat'
 end
 
