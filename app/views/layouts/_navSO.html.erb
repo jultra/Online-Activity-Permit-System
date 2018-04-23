@@ -28,27 +28,29 @@
             <li class="<%= is_active_controller('dashboards') %>">
                 <a href=""><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a>
             </li>
-            <li class="<%= is_active_controller('gridoptions') %>">
-                <%= link_to gridoptions_index_path do %>
+            <li class="<%= is_active_controller('apply') %>">
+                <%= link_to apply_apply_path do %>
                 <i class="fa fa-edit"></i> <span class="nav-label">Apply Activity Permit</span>
                 <% end %>
             </li>
-            <li class="<%= is_active_controller('forms') %>">
+
+            <li class="<%= is_active_controller('apply') %>">
                 <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Activity Permits</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level is_active_controller('forms')">
-                    <li class="<%= is_active_action('advanced') %>"><%= link_to "Pending", forms_advanced_path %> </li>
-                    <li class="<%= is_active_action('wizard') %>"><%= link_to "Approved", forms_wizard_path %> </li>
-                    <li class="<%= is_active_action('file_upload') %>"><%= link_to "Rejected", forms_file_upload_path %> </li>
+                    <li class="<%= is_active_action('pending') %>"><%= link_to "Pending", apply_pending_path %> </li>
+                    <li class="<%= is_active_action('approved') %>"><%= link_to "Approved", apply_approved_path %> </li>
+                    <li class="<%= is_active_action('rejected') %>"><%= link_to "Rejected", apply_rejected_path %> </li>
                 </ul>
             </li>
-            <li class="<%= is_active_controller('tables') %>">
+            
+            <li class="<%= is_active_controller('calendar') %>">
                 <a href="#"><i class="fa fa-table"></i> <span class="nav-label">Calendars</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level is_active_controller('tables')">
-                    <li class="<%= is_active_action('static_tables') %>"><%= link_to "DSS", tables_static_tables_path %> </li>
-                    <li class="<%= is_active_action('data_tables') %>"><%= link_to "DM", tables_data_tables_path %></li>
-                    <li class="<%= is_active_action('jqgrid') %>"><%= link_to "DH", tables_jqgrid_path %></li>
-                    <li class="<%= is_active_action('static_tables') %>"><%= link_to "DNSM", tables_static_tables_path %> </li>
-                    <li class="<%= is_active_action('data_tables') %>"><%= link_to "Admin", tables_data_tables_path %></li>
+                    <li class="<%= is_active_action('dss') %>"><%= link_to "DSS", calendar_dss_path %> </li>
+                    <li class="<%= is_active_action('dm') %>"><%= link_to "DM", calendar_dm_path %></li>
+                    <li class="<%= is_active_action('dh') %>"><%= link_to "DH", calendar_dh_path %></li>
+                    <li class="<%= is_active_action('dnsm') %>"><%= link_to "DNSM", calendar_dnsm_path %> </li>
+                    <li class="<%= is_active_action('admin') %>"><%= link_to "Admin", calendar_calendar_path %></li>
                 </ul>
             </li>
             <li class="<%= is_active_controller('layoutsoptions') %>">

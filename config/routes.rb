@@ -11,13 +11,6 @@ Myapp::Application.routes.draw do
 
 
 
-
-
-
-
-
-
-
 #PREDEFINED ROUTES OF TEMPLATE
   # All routes
   get "dashboards/dashboard_1"
@@ -127,5 +120,9 @@ Myapp::Application.routes.draw do
   get "apply/rejected"
   get "calendar/calendar"
   get "calendar/as"
+  get "calendar/dh"
+  get "calendar/dss"
+  get "calendar/dnsm"
+  get "calendar/dm"
 
 end
