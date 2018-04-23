@@ -1,5 +1,4 @@
 Feature: Login
-
     As a Student Organization User
     So I can start using the system
     I need to Login
