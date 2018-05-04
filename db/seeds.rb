@@ -9,4 +9,5 @@ user = User.new
 user.email = 'test@gmail.com'
 user.password = 'qwerty'
 user.password_confirmation = 'qwerty'
+user.add_role 'admin'
 user.save!
