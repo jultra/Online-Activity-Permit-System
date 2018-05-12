@@ -1,0 +1,34 @@
+
+<div class="wizard-big">
+<%= form_tag("create", method: "post") do %>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="form-group">
+                <%= label_tag(:activity, "Activity: ") %>
+                <%= text_field_tag(:activity) %>
+            </div>
+            <div class="form-group">
+                <%= label_tag(:venue, "Venue: ") %>
+                <%= text_field_tag(:venue) %>
+            </div>
+            <div class="form-group">
+                <%= label_tag(:organization, "Organization: ") %>
+                <%= text_field_tag(:organization) %>
+            </div>
+            <div class="form-group">
+                <%= label_tag(:date_needed, "Date Needed: ") %>
+                <%= text_field_tag(:date_needed) %>
+            </div>
+            <div class="form-group">
+                <%= label_tag(:time, "Time: ") %>
+                <%= text_field_tag(:time) %>
+            </div>
+            <div class="form-group">
+                <%= label_tag(:requisitioner, "Requisitioner: ") %>
+                <%= text_field_tag(:requisitioner) %>
+            </div>
+                <%= submit_tag("Submit") %>
+        </div>
+    </div>
+<% end %>
+</div>

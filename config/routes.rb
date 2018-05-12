@@ -135,4 +135,7 @@ end
   get "calendar/calendar"
   get "calendar/as"
 
+  get "permits/new"
+  post "permits/create"
+
 end
