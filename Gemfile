@@ -7,6 +7,10 @@ gem 'bootstrap-sass', '3.3.0.0'
 gem 'font-awesome-rails', '4.3.0.0'
 
 gem 'devise'
+gem 'easy_roles'
+
+#TImezone for windows
+gem 'tzinfo-data'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
