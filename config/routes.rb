@@ -2,7 +2,7 @@ Myapp::Application.routes.draw do
 
   devise_for :users
   # You can have the root of your site routed with "root"
-  root to: 'dashboards#dashboard_2'
+  root to: 'dashboards#student_org_dashboard'
 
   devise_scope :user do
   match '/sign-in' => "devise/sessions#new", :as => :login, :via => [:get, :post]
@@ -135,7 +135,10 @@ end
   get "calendar/calendar"
   get "calendar/as"
 
+  get "permits/index"
   get "permits/new"
+  get "permits/approved"
+  get "permits/rejected"
   post "permits/create"
 
 end

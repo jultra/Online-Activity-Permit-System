@@ -36,9 +36,9 @@
             <li class="<%= is_active_controller('permits') %>">
                 <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Activity Permits</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level is_active_controller('permits')">
-                    <li class="<%= is_active_action('index') %>"><%= link_to "Pending", apply_pending_path %> </li>
-                    <li class="<%= is_active_action('permits') %>"><%= link_to "Approved", apply_approved_path %> </li>
-                    <li class="<%= is_active_action('permits') %>"><%= link_to "Rejected", apply_rejected_path %> </li>
+                    <li class="<%= is_active_action('index') %>"><%= link_to "Pending", permits_index_path %> </li>
+                    <li class="<%= is_active_action('approved') %>"><%= link_to "Approved", permits_approved_path %> </li>
+                    <li class="<%= is_active_action('rejected') %>"><%= link_to "Rejected", permits_rejected_path %> </li>
                 </ul>
             </li>
             <li class="<%= is_active_controller('tables') %>">

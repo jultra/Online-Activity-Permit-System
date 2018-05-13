@@ -1,5 +1,5 @@
 class CreatePermits < ActiveRecord::Migration
-  def change
+  def self.up
     create_table :permits do |t|
       t.string :activity
       t.string :venue
@@ -11,5 +11,9 @@ class CreatePermits < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+  end
+  
+  def self.down
+    drop_table :permits
   end
 end

@@ -1,10 +1,19 @@
 class PermitsController < ApplicationController
     # protect_from_forgery prepend: true, with: :exception
     # before_action :authenticate_user!
+    before_action :permit_params
 
+    # We need to get current user ID so that it will only see its request
     def index
-        @permit = Permit.all.order("created_at DESC")
-        return @permit
+        @permit = Permit.where(:status => "pending")
+    end
+
+    def approved
+        @permit = Permit.where(:status => "approved")
+    end
+
+    def rejected
+        @permit = Permit.where(:status => "rejected")
     end
 
     def new
@@ -15,7 +24,7 @@ class PermitsController < ApplicationController
         @permit = Permit.new(permit_params)
 
         if @permit.save
-            redirect_to apply_pending_path
+            redirect_to permits_index_path
         else
             render 'new'
         end
