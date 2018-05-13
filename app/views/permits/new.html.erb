@@ -27,6 +27,7 @@
                 <%= label_tag(:requisitioner, "Requisitioner: ") %>
                 <%= text_field_tag(:requisitioner) %>
             </div>
+            <%= hidden_field_tag 'status', 'pending'  %>
                 <%= submit_tag("Submit") %>
         </div>
     </div>

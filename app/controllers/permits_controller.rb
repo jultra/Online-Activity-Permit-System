@@ -1,9 +1,10 @@
 class PermitsController < ApplicationController
-    protect_from_forgery prepend: true, with: :exception
+    # protect_from_forgery prepend: true, with: :exception
     # before_action :authenticate_user!
 
     def index
         @permit = Permit.all.order("created_at DESC")
+        return @permit
     end
 
     def new
@@ -22,6 +23,6 @@ class PermitsController < ApplicationController
 
     private
         def permit_params
-            params.permit(:activity, :venue, :organization, :date_needed, :time, :requisitioner)
+            params.permit(:activity, :venue, :organization, :date_needed, :time, :requisitioner, :status)
         end
 end
