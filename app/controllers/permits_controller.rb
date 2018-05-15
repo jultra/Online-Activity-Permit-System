@@ -5,15 +5,15 @@ class PermitsController < ApplicationController
 
     # We need to get current user ID so that it will only see its request
     def index
-        @permit = Permit.where(:status => "pending")
+        @permit = Permit.where(:osaStatus => "pending")
     end
 
     def approved
-        @permit = Permit.where(:status => "approved")
+        @permit = Permit.where(:adminStatus => "approved")
     end
 
     def rejected
-        @permit = Permit.where(:status => "rejected")
+        @permit = Permit.where(:adminStatus => "rejected")
     end
 
     def new
@@ -32,6 +32,6 @@ class PermitsController < ApplicationController
 
     private
         def permit_params
-            params.permit(:activity, :venue, :organization, :date_needed, :time, :requisitioner, :status)
+            params.permit(:activity, :venue, :organization, :date_needed, :time, :requisitioner, :osaStatus, :adminStatus, :telesStatus)
         end
 end

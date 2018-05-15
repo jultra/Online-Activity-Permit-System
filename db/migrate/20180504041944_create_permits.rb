@@ -7,7 +7,9 @@ class CreatePermits < ActiveRecord::Migration
       t.string :date_needed
       t.string :time
       t.string :requisitioner
-      t.string :status
+      t.string :osaStatus
+      t.string :adminStatus
+      t.string :telesStatus
 
       t.timestamps null: false
     end

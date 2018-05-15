@@ -20,7 +20,9 @@ ActiveRecord::Schema.define(version: 20180504041944) do
     t.string   "date_needed"
     t.string   "time"
     t.string   "requisitioner"
-    t.string   "status"
+    t.string   "osaStatus"
+    t.string   "adminStatus"
+    t.string   "telesStatus"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
