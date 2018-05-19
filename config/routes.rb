@@ -2,7 +2,9 @@ Myapp::Application.routes.draw do
 
   devise_for :users
   # You can have the root of your site routed with "root"
+
   root to: 'home#dashboard'
+
 
   devise_scope :user do
     match '/sign-in' => "devise/sessions#new", :as => :login, :via => [:get, :post]
