@@ -1,0 +1,223 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Add User</h2>
+        <ol class="breadcrumb">
+            <li>
+                <%= link_to "Home", root_path %>
+            </li>
+            <li>
+                <a>Users</a>
+            </li>
+            <li class="active">
+                <strong>Add User</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Add User</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <h2>
+                        User Personal Information
+                    </h2>
+                    <p></p>
+                    
+                    <%= form_tag admin_users_path, :class => 'wizard-big', :id => 'form' do %>
+                        <h1>User Type</h1>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label text-navy"><br/>Choose type of user:</label>
+                                <div class="col-sm-10">
+                                    <br/><br/>
+                                    <%= select_tag "user_type", 
+                                        '<option value="student_org" selected="selected">Student Organization</option>
+                                        <option value="class">Class</option>
+                                        <option value="adviser">Adviser</option>
+                                        <option value="employee">Employee</option>
+                                        <option value="facility">Facility-in-charge</option>
+                                        <option value="osa">OSA Coordinator</option>
+                                        <option value="sao">Supervising Administrative Officer</option>'.html_safe, class: 'form-control',
+                                        onchange: 'CheckUser(this.value);', multiple: false %>
+                      
+                                </div>
+                            </div>
+                        </fieldset>
+                        
+                        <h1>Profile</h1>
+                        <fieldset>
+                            <h2>Profile Information</h2>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <div id="name1_label1" style="display:block">
+                                            <label>First name *</label>
+                                        </div>
+                                        <div id="name1_label2" style="display:none">
+                                            <label>Organization Name *</label>
+                                        </div>
+                                        <div id="name1_label3" style="display:none">
+                                            <label>Subject and Section *</label>
+                                        </div>
+                                        <%= text_field_tag 'name', nil , class: 'form-control required', id: 'name', type: 'text' %>
+                                    </div>
+                                    <div class="form-group">
+                                        <div id="name2_label1" style="display:block">
+                                            <label>Last name *</label>
+                                        </div>
+                                        <div id="name2_label2" style="display:none">
+                                            <label>School Year *</label>
+                                        </div>
+                                        <%= text_field_tag 'surname', nil , class: 'form-control required', id: 'surname', type: 'text' %>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Address</label>
+                                        <%= text_field_tag 'address', nil , class: 'form-control', id: 'address', type: 'text' %>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Contact Number</label>
+                                        <%= text_field_tag 'address', nil , class: 'form-control', id: 'address', type: 'text' %>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        
+                        <h1>Account</h1>
+                        <fieldset>
+                            <h2>Account Information</h2>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="form-group">
+                                        <label>Email *</label>
+                                        <%= text_field_tag 'email', nil , class: 'form-control required email', id: 'email', type: 'text' %>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password *</label>
+                                        <%= text_field_tag 'password', nil , class: 'form-control required', id: 'password', type: 'password' %>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Confirm Password *</label>
+                                        <%= text_field_tag 'confirm', nil , class: 'form-control required', id: 'confirm', type: 'password' %>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="text-center">
+                                        <div style="margin-top: 20px">
+                                            <i class="fa fa-sign-in" style="font-size: 180px;color: #e5e5e5 "></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                        </fieldset>
+    
+                        <h1>Finish</h1>
+                        <fieldset>
+                            <h2>Terms and Conditions</h2>
+                            <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required"> <label for="acceptTerms">I agree with the Terms and Conditions.</label>
+                        </fieldset>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+</div>
+
+
+<% content_for :javascript do %>
+    <script type="text/javascript">
+    
+    $(function() {
+    
+        $("#wizard").steps();
+        $("#form").steps({
+            bodyTag: "fieldset",
+            onStepChanging: function (event, currentIndex, newIndex) {
+                // Always allow going backward even if the current step contains invalid fields!
+                if (currentIndex > newIndex) {
+                    return true;
+                }
+    
+                // Forbid suppressing "Warning" step if the user is to young
+                if (newIndex === 3 && Number($("#age").val()) < 18) {
+                    return false;
+                }
+    
+                var form = $(this);
+    
+                // Clean up if user went backward before
+                if (currentIndex < newIndex) {
+                    // To remove error styles
+                    $(".body:eq(" + newIndex + ") label.error", form).remove();
+                    $(".body:eq(" + newIndex + ") .error", form).removeClass("error");
+                }
+    
+                // Disable validation on fields that are disabled or hidden.
+                form.validate().settings.ignore = ":disabled,:hidden";
+    
+                // Start validation; Prevent going forward if false
+                return form.valid();
+            },
+            onStepChanged: function (event, currentIndex, priorIndex) {
+                // Suppress (skip) "Warning" step if the user is old enough.
+                if (currentIndex === 2 && Number($("#age").val()) >= 18) {
+                    $(this).steps("next");
+                }
+    
+                // Suppress (skip) "Warning" step if the user is old enough and wants to the previous step.
+                if (currentIndex === 2 && priorIndex === 3) {
+                    $(this).steps("previous");
+                }
+            },
+            onFinishing: function (event, currentIndex) {
+                var form = $(this);
+    
+                // Disable validation on fields that are disabled.
+                // At this point it's recommended to do an overall check (mean ignoring only disabled fields)
+                form.validate().settings.ignore = ":disabled";
+    
+                // Start validation; Prevent form submission if false
+                return form.valid();
+            },
+            onFinished: function (event, currentIndex) {
+                var form = $(this);
+    
+                // Submit form input
+                form.submit();
+            }
+        }).validate({
+                    errorPlacement: function (error, element) {
+                        element.before(error);
+                    },
+                    rules: {
+                        confirm: {
+                            equalTo: "#password"
+                        }
+                    }
+                });
+        
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+    
+    });
+    
+    </script>
+<% end %>
