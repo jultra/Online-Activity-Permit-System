@@ -61,10 +61,24 @@
                     <td>OSA Coordinator</td>
                 <%elsif post.facilityStatus == "pending" %>
                     <td>Facility in Charge</td>
+                <%elsif post.saoStatus == "pending" %>
+                    <td>Sir Teles</td>
                 <% else %>
-                     <td>Sir Teles</td>
+                     <td>Ready to use</td>
                 <% end %>
-                <td><%= post.osaStatus %></td>
+
+                <% if current_user.is_adviser? %>
+                    <td><%= post.adviserStatus %></td>
+                <% elsif current_user.is_osa? %>
+                    <td><%= post.osaStatus %></td>
+                <% elsif current_user.is_facility? %>
+                    <td><%= post.facilityStatus %></td>
+                <% elsif current_user.is_sao? %>
+                    <td><%= post.saoStatus %></td>
+                <% elsif current_user.is_student_org? %>
+                    <td><%= post.saoStatus %></td>
+                <% end %>
+
                 <td><%= link_to "", permits_edit_path(:id => post.id), class: "glyphicon glyphicon-pencil" %>
                 <%= link_to "", permits_destroy_path(:id => post.id), class: "glyphicon glyphicon-trash" %></td>
                 

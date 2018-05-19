@@ -5,15 +5,45 @@ class PermitsController < ApplicationController
 
     # We need to get current user ID so that it will only see its request
     def index
-        @permit = Permit.where(:adviserStatus => "pending")
+        if current_user.is_adviser?
+            @permit = Permit.where(:adviserStatus => "pending")
+        elsif current_user.is_osa?
+            @permit = Permit.where(:osaStatus => "pending")
+        elsif current_user.is_facility?
+            @permit = Permit.where(:facilityStatus => "pending")
+        elsif current_user.is_sao?
+            @permit = Permit.where(:saoStatus => "pending")
+        elsif current_user.is_student_org?
+            @permit = Permit.where(:saoStatus => "pending")
+        end
     end
 
     def approved
-        @permit = Permit.where(:adviserStatus => "approved")
+        if current_user.is_adviser?
+            @permit = Permit.where(:adviserStatus => "approved")
+        elsif current_user.is_osa?
+            @permit = Permit.where(:osaStatus => "approved")
+        elsif current_user.is_facility?
+            @permit = Permit.where(:facilityStatus => "approved")
+        elsif current_user.is_sao?
+            @permit = Permit.where(:saoStatus => "approved")
+        elsif current_user.is_student_org?
+            @permit = Permit.where(:saoStatus => "approved")
+        end
     end
 
     def rejected
-        @permit = Permit.where(:adviserStatus => "rejected")
+        if current_user.is_adviser?
+            @permit = Permit.where(:adviserStatus => "rejected")
+        elsif current_user.is_osa?
+            @permit = Permit.where(:osaStatus => "rejected")
+        elsif current_user.is_facility?
+            @permit = Permit.where(:facilityStatus => "rejected")
+        elsif current_user.is_sao?
+            @permit = Permit.where(:saoStatus => "rejected")
+        elsif current_user.is_student_org?
+            @permit = Permit.where(:saoStatus => "rejected")
+        end
     end
 
     def new

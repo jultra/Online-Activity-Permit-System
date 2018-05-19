@@ -99,22 +99,26 @@
                     <% end %></td>
                 <% elsif post.osaStatus == "pending" %>
                     <td>OSA Coordinator</td>
-                    <td><span class="pie">2,4</span><%= post.osaStatus %></td>
+                    <td><span class="pie">1,3</span><%= post.osaStatus %></td>
                     <td><% if  current_user && current_user.is_osa?%>
-                    <%= link_to "", adviser_update_path(:id => post.id), class: "glyphicon glyphicon-ok" %>
+                    <%= link_to "", adviser_approve_path(:id => post.id), class: "glyphicon glyphicon-ok" %>
+                    <%= link_to "", adviser_reject_path(:id => post.id), class: "glyphicon glyphicon-remove" %>
                     <% end %></td>
                 <%elsif post.facilityStatus == "pending" %>
                     <td>Facility in Charge</td>
-                    <td><span class="pie">3,4</span><%= post.facilityStatus %></td>
+                    <td><span class="pie">4,4</span><%= post.facilityStatus %></td>
                     <td><% if  current_user && current_user.is_facility?%>
-                    <%= link_to "", adviser_update_path(:id => post.id), class: "glyphicon glyphicon-ok" %>
+                    <%= link_to "", adviser_approve_path(:id => post.id), class: "glyphicon glyphicon-ok" %>
+                    <%= link_to "", adviser_reject_path(:id => post.id), class: "glyphicon glyphicon-remove" %>
                     <% end %></td>
-                <% else %>
+                <%elsif post.saoStatus == "pending" %>
                     <td>Sir Teles</td>
-                    <td><span class="pie">4,4</span><%= post.saoStatus %></td>
+                    <td><span class="pie">3,1</span><%= post.saoStatus %></td>
                     <td><% if  current_user && current_user.is_sao?%>
-                    <%= link_to "", adviser_update_path(:id => post.id), class: "glyphicon glyphicon-ok" %>
+                    <%= link_to "", adviser_approve_path(:id => post.id), class: "glyphicon glyphicon-ok" %>
+                    <%= link_to "", adviser_reject_path(:id => post.id), class: "glyphicon glyphicon-remove" %>
                     <% end %></td>
+                
                 <% end %>
                 
                 <td><%= link_to "", permits_edit_path(:id => post.id), class: "glyphicon glyphicon-pencil" %>
