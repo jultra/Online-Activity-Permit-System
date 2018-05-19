@@ -12,7 +12,8 @@ class DashboardsController < ApplicationController
   end
 
   def dashboard_4
-    render :layout => "layout_2"
+    # render :layout => "layout_2"
+    render :layout => "appSO"
   end
 
   def dashboard_4_1

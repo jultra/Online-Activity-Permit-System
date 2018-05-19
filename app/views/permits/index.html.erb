@@ -1,0 +1,25 @@
+<h1>Pending Permits</h1>
+
+<div class="col-lg-8">
+    <% if flash[:notice] -%>
+    <div class="alert alert-success">
+        <p class="notice"><%= flash[:notice] %></p>
+    </div>  
+    <% end -%>
+  <% for post in @permit %>
+    <div class="ibox">
+        <div class="ibox-title">
+            <h3><%= post.activity %></h3>
+        </div>
+        <div class="ibox-content">
+            <h4> Venue: <%= post.venue %></h4>
+            <h4> Organization: <%= post.organization %></h4>
+            <h4> Date Needed: <%= post.date_needed %></h4>
+            <h4> Time: <%= post.time %></h4>
+            <h4> Requisitioner: <%= post.requisitioner %></h4>
+        </div>
+        <%= link_to "Edit", permits_edit_path(:id => post.id), class: "btn btn-custom" %>
+        <%= link_to "Delete", permits_destroy_path(:id => post.id), class: "btn btn-custom" %>
+    </div>
+    <% end %>
+</div>

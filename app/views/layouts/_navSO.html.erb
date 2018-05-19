@@ -28,17 +28,17 @@
             <li class="<%= is_active_controller('dashboards') %>">
                 <a href=""><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a>
             </li>
-            <li class="<%= is_active_controller('gridoptions') %>">
-                <%= link_to gridoptions_index_path do %>
+            <li class="<%= is_active_controller('permits') %>">
+                <%= link_to permits_new_path do %>
                 <i class="fa fa-edit"></i> <span class="nav-label">Apply Activity Permit</span>
                 <% end %>
             </li>
-            <li class="<%= is_active_controller('forms') %>">
+            <li class="<%= is_active_controller('permits') %>">
                 <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Activity Permits</span><span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level is_active_controller('forms')">
-                    <li class="<%= is_active_action('advanced') %>"><%= link_to "Pending", forms_advanced_path %> </li>
-                    <li class="<%= is_active_action('wizard') %>"><%= link_to "Approved", forms_wizard_path %> </li>
-                    <li class="<%= is_active_action('file_upload') %>"><%= link_to "Rejected", forms_file_upload_path %> </li>
+                <ul class="nav nav-second-level is_active_controller('permits')">
+                    <li class="<%= is_active_action('index') %>"><%= link_to "Pending", permits_index_path %> </li>
+                    <li class="<%= is_active_action('approved') %>"><%= link_to "Approved", permits_approved_path %> </li>
+                    <li class="<%= is_active_action('rejected') %>"><%= link_to "Rejected", permits_rejected_path %> </li>
                 </ul>
             </li>
             <li class="<%= is_active_controller('tables') %>">
