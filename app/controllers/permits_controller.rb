@@ -30,6 +30,23 @@ class PermitsController < ApplicationController
         end
     end
 
+    def edit
+        @permit = Permit.find(params[:id])
+    end
+
+    def update
+        @permit = Permit.find(params[:id])
+        @permit.update(activity: params[:activity])
+        redirect_to permits_index_path(@permit)
+    end
+
+    def destroy
+        @permit = Permit.find(params[:id])
+        @permit.destroy
+        flash[:notice] = "You have successfully deleted the permit"
+        redirect_to permits_index_path
+    end
+
     private
         def permit_params
             params.permit(:activity, :venue, :organization, :date_needed, :time, :requisitioner, :osaStatus, :adminStatus, :telesStatus)

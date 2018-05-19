@@ -10,9 +10,9 @@ class CreatePermits < ActiveRecord::Migration
       t.string :osaStatus
       t.string :adminStatus
       t.string :telesStatus
-
       t.timestamps null: false
     end
+
   end
   
   def self.down

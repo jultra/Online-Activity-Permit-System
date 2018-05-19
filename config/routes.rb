@@ -140,5 +140,8 @@ end
   get "permits/approved"
   get "permits/rejected"
   post "permits/create"
+  get "permits/edit"
+  put "permits/update"
+  get "permits/destroy"
 
 end
