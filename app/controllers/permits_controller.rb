@@ -24,6 +24,7 @@ class PermitsController < ApplicationController
         @permit = Permit.new(permit_params)
 
         if @permit.save
+            flash[:notice] = "You have successfully created a permit"
             redirect_to permits_index_path
         else
             render 'new'
@@ -37,6 +38,7 @@ class PermitsController < ApplicationController
     def update
         @permit = Permit.find(params[:id])
         @permit.update(activity: params[:activity])
+        flash[:notice] = "You have successfully updated the permit"
         redirect_to permits_index_path(@permit)
     end
 
