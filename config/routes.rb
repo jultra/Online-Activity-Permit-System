@@ -2,13 +2,26 @@ Myapp::Application.routes.draw do
 
   devise_for :users
   # You can have the root of your site routed with "root"
-  root to: 'dashboards#student_org_dashboard'
+  root to: 'home#dashboard'
 
   devise_scope :user do
-  match '/sign-in' => "devise/sessions#new", :as => :login, :via => [:get, :post]
-  get '/users/sign_out' => 'devise/sessions#destroy'
-  #match '/sign-out' => "devise/session#destroy", :via => [:get, :post]
-end
+    match '/sign-in' => "devise/sessions#new", :as => :login, :via => [:get, :post]
+    get '/users/sign_out' => 'devise/sessions#destroy'
+    #match '/sign-out' => "devise/session#destroy", :via => [:get, :post]
+  end
+  
+  
+  namespace :admin do
+    get '/users/studentOrgs' => 'admin/users/studentOrgs'
+    resources :users
+    
+    get '/users/classGroup' => 'admin/users/classGroup'
+    get '/users/adviser' => 'admin/users/adviser'
+    get '/users/employee' => 'admin/users/employee'
+    get '/users/facility' => 'admin/users/facility'
+    get '/users/osa' => 'admin/users/osa'
+    get '/users/sao' => 'admin/users/sao'
+  end
 
   # Auth routes
   get "auth/login"
