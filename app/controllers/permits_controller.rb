@@ -37,7 +37,8 @@ class PermitsController < ApplicationController
 
     def update
         @permit = Permit.find(params[:id])
-        @permit.update(activity: params[:activity])
+        @permit.update(activity: params[:activity], venue: params[:venue], organization: params[:organization], date_needed: params[:date_needed],
+                        time: params[:time])
         flash[:notice] = "You have successfully updated the permit"
         redirect_to permits_index_path(@permit)
     end
