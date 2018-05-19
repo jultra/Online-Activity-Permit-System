@@ -21,10 +21,16 @@ class AdviserController < ApplicationController
 
         if current_user.is_adviser?
             @permit.update(adviserStatus: "rejected")
+            @permit.update(osaStatus: "rejected")
+            @permit.update(facilityStatus: "rejected")
+            @permit.update(saoStatus: "rejected")
         elsif current_user.is_osa?
             @permit.update(osaStatus: "rejected")
+            @permit.update(facilityStatus: "rejected")
+            @permit.update(saoStatus: "rejected")
         elsif current_user.is_facility?
             @permit.update(facilityStatus: "rejected")
+            @permit.update(saoStatus: "rejected")
         elsif current_user.is_sao?
             @permit.update(saoStatus: "rejected")
         end
