@@ -8,8 +8,9 @@ class CreatePermits < ActiveRecord::Migration
       t.string :time
       t.string :requisitioner
       t.string :osaStatus
-      t.string :adminStatus
-      t.string :telesStatus
+      t.string :adviserStatus
+      t.string :saoStatus
+      t.string :facilityStatus
       t.timestamps null: false
     end
 

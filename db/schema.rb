@@ -21,10 +21,11 @@ ActiveRecord::Schema.define(version: 20180504041944) do
     t.string   "time"
     t.string   "requisitioner"
     t.string   "osaStatus"
-    t.string   "adminStatus"
-    t.string   "telesStatus"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "adviserStatus"
+    t.string   "saoStatus"
+    t.string   "facilityStatus"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "users", force: :cascade do |t|

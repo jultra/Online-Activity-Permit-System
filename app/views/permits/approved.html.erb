@@ -1,20 +1,82 @@
-<h1>Approved Permits</h1>
 
-<div class="col-lg-8">
-  <% for post in @permit %>
-    <div class="ibox">
-        <div class="ibox-title">
-            <h3><%= post.activity %></h3>
+
+<div class="row">
+<div class="col-lg-12">
+<div class="ibox float-e-margins">
+    <% if flash[:notice] -%>
+        <div class="alert alert-success">
+            <p class="notice"><%= flash[:notice] %></p>
+        </div>  
+    <% end -%>
+<div class="ibox-title">
+    <h5>Approved Activity Permits</h5>
+    <div class="ibox-tools">
+        <a class="collapse-link">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="fa fa-wrench"></i>
+        </a>
+        <a class="close-link">
+            <i class="fa fa-times"></i>
+        </a>
+    </div>
+</div>
+<div class="ibox-content">
+    <div class="row">
+        <div class="col-sm-9 m-b-xs">
         </div>
-        <div class="ibox-content">
-
-            <h4> Venue: <%= post.venue %></h4>
-            <h4> Organization: <%= post.organization %></h4>
-            <h4> Date Needed: <%= post.date_needed %></h4>
-            <h4> Time: <%= post.time %></h4>
-            <h4> Requisitioner: <%= post.requisitioner %></h4>
-            
+        <div class="col-sm-3">
+            <div class="input-group">
+                <input type="text" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
+                                    <button type="button" class="btn btn-sm btn-primary"> Go!</button>
+                                </span>
+            </div>
         </div>
     </div>
-    <% end %>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Activity </th>
+                <th>Venue</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Current Approving Personnel </th>
+                <th>Status </th>
+                <th>Cancel</th>
+            </tr>
+            </thead>
+            
+            <tbody>
+            <% for post in @permit %>
+            <tr>
+                <td><%= post.activity %></td>
+                <td><%= post.venue %></td>
+                <td><%= post.date_needed %></td>
+                <td><%= post.time %></td>
+                <% if post.adviserStatus == "pending" %>
+                    <td>Adviser</td>
+                <% elsif post.osaStatus == "pending" %>
+                    <td>OSA Coordinator</td>
+                <%elsif post.facilityStatus == "pending" %>
+                    <td>Facility in Charge</td>
+                <% else %>
+                     <td>Sir Teles</td>
+                <% end %>
+                <td><%= post.osaStatus %></td>
+                <td><%= link_to "", permits_edit_path(:id => post.id), class: "glyphicon glyphicon-pencil" %>
+                <%= link_to "", permits_destroy_path(:id => post.id), class: "glyphicon glyphicon-trash" %></td>
+                
+            </tr>
+            <% end %>
+            </tbody>
+            
+        </table>
+    </div>
+
+</div>
+</div>
+</div>
+</div>
 </div>
