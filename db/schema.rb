@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 20180504041944) do
   create_table "permits", force: :cascade do |t|
     t.string   "activity"
     t.string   "venue"
-    t.string   "organization"
+    t.integer  "org_id"
     t.string   "date_needed"
-    t.string   "time"
-    t.string   "requisitioner"
+    t.string   "timefrom"
+    t.string   "timeto"
     t.string   "osaStatus"
     t.string   "adviserStatus"
     t.string   "saoStatus"

@@ -54,7 +54,7 @@
                 <td><%= post.activity %></td>
                 <td><%= post.venue %></td>
                 <td><%= post.date_needed %></td>
-                <td><%= post.time %></td>
+                <td><%= post.timefrom %> - <%= post.timefrom %></td>
                 <% if post.adviserStatus == "pending" %>
                     <td>Adviser</td>
                 <% elsif post.osaStatus == "pending" %>
@@ -64,7 +64,7 @@
                 <%elsif post.saoStatus == "pending" %>
                     <td>Sir Teles</td>
                 <% else %>
-                     <td>Ready to use</td>
+                    <td><%= link_to "PDF", permits_pdf_path(:id => post.id, :format=>'pdf'), class: "btn btn-info" %></td>
                 <% end %>
 
                 <% if current_user.is_adviser? %>

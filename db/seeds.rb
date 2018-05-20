@@ -26,6 +26,16 @@ user.add_role 'student_org'
 user.save!
 
 user = User.new
+user.name = 'UP'
+user.surname = '2017-2018'
+user.userName = 'up'
+user.email = 'up@gmail.com'
+user.password = 'qwerty'
+user.password_confirmation = 'qwerty'
+user.add_role 'student_org'
+user.save!
+
+user = User.new
 user.name = 'Yuno'
 user.surname = 'Romero'
 user.userName = 'yuno'

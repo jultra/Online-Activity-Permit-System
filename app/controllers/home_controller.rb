@@ -11,7 +11,9 @@ class HomeController < ApplicationController
     elsif current_user.is_sao?
         @permit = Permit.where(:saoStatus => "pending")
     elsif current_user.is_student_org?
-        @permit = Permit.where(:saoStatus => "pending" )
+        @permit = Permit.where(saoStatus: 'pending', org_id: current_user.id)
+    else
+        @permit = Permit.all
     end
   end
 end

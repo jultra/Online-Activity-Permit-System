@@ -153,6 +153,7 @@ Myapp::Application.routes.draw do
   get "permits/edit"
   put "permits/update"
   get "permits/update"
+  get "permits/pdf"
   get "permits/destroy"
   get "adviser/update"
   get "adviser/approve"

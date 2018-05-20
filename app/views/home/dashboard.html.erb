@@ -89,7 +89,7 @@
                 <td><%= post.activity %></td>
                 <td><%= post.venue %></td>
                 <td><%= post.date_needed %></td>
-                <td><%= post.time %></td>
+                <td><%= post.timefrom %> - <%= post.timeto %></td>
                 <% if post.adviserStatus == "pending" %>
                     <td>Adviser</td>
                     <td><span class="pie">1,4</span><%= post.adviserStatus %></td>
