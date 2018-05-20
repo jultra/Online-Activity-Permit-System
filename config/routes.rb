@@ -35,11 +35,6 @@ Myapp::Application.routes.draw do
 
 
 
-
-
-
-
-
 #PREDEFINED ROUTES OF TEMPLATE
   # All routes
   get "dashboards/dashboard_1"
@@ -157,6 +152,11 @@ Myapp::Application.routes.draw do
   post "permits/create"
   get "permits/edit"
   put "permits/update"
+  get "permits/update"
+  get "permits/pdf"
   get "permits/destroy"
+  get "adviser/update"
+  get "adviser/approve"
+  get "adviser/reject"
 
 end

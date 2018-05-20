@@ -3,13 +3,14 @@ class CreatePermits < ActiveRecord::Migration
     create_table :permits do |t|
       t.string :activity
       t.string :venue
-      t.string :organization
+      t.integer :org_id
       t.string :date_needed
-      t.string :time
-      t.string :requisitioner
+      t.string :timefrom 
+      t.string :timeto
       t.string :osaStatus
-      t.string :adminStatus
-      t.string :telesStatus
+      t.string :adviserStatus
+      t.string :saoStatus
+      t.string :facilityStatus
       t.timestamps null: false
     end
 

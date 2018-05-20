@@ -5,15 +5,45 @@ class PermitsController < ApplicationController
 
     # We need to get current user ID so that it will only see its request
     def index
-        @permit = Permit.where(:osaStatus => "pending")
+        if current_user.is_adviser?
+            @permit = Permit.where(:adviserStatus => "pending")
+        elsif current_user.is_osa?
+            @permit = Permit.where(:osaStatus => "pending")
+        elsif current_user.is_facility?
+            @permit = Permit.where(:facilityStatus => "pending")
+        elsif current_user.is_sao?
+            @permit = Permit.where(:saoStatus => "pending")
+        elsif current_user.is_student_org?
+            @permit = Permit.where(saoStatus: 'pending', org_id: current_user.id)
+        end
     end
 
     def approved
-        @permit = Permit.where(:adminStatus => "approved")
+        if current_user.is_adviser?
+            @permit = Permit.where(:adviserStatus => "approved")
+        elsif current_user.is_osa?
+            @permit = Permit.where(:osaStatus => "approved")
+        elsif current_user.is_facility?
+            @permit = Permit.where(:facilityStatus => "approved")
+        elsif current_user.is_sao?
+            @permit = Permit.where(:saoStatus => "approved")
+        elsif current_user.is_student_org?
+            @permit = Permit.where(:saoStatus => "approved")
+        end
     end
 
     def rejected
-        @permit = Permit.where(:adminStatus => "rejected")
+        if current_user.is_adviser?
+            @permit = Permit.where(:adviserStatus => "rejected")
+        elsif current_user.is_osa?
+            @permit = Permit.where(:osaStatus => "rejected")
+        elsif current_user.is_facility?
+            @permit = Permit.where(:facilityStatus => "rejected")
+        elsif current_user.is_sao?
+            @permit = Permit.where(:saoStatus => "rejected")
+        elsif current_user.is_student_org?
+            @permit = Permit.where(:saoStatus => "rejected")
+        end
     end
 
     def new
@@ -37,8 +67,9 @@ class PermitsController < ApplicationController
 
     def update
         @permit = Permit.find(params[:id])
-        @permit.update(activity: params[:activity], venue: params[:venue], organization: params[:organization], date_needed: params[:date_needed],
-                        time: params[:time])
+        @permit.update(activity: params[:activity], venue: params[:venue], org_id: params[:org_id], date_needed: params[:date_needed],
+                        timefrom: params[:timefrom], timeto: params[:timeto], osaStatus: params[:osaStatus], adviserStatus: params[:adviserStatus],
+                        facilityStatus: params[:facilityStatus], saoStatus: params[:saoStatus])
         flash[:notice] = "You have successfully updated the permit"
         redirect_to permits_index_path(@permit)
     end
@@ -50,8 +81,19 @@ class PermitsController < ApplicationController
         redirect_to permits_index_path
     end
 
+    def pdf
+        @permit = Permit.find(params[:id])
+        respond_to do |format|
+        format.html
+        format.pdf do
+            render :pdf => "report", :template => 'permits/pdf.html.erb'
+        end
+        format.html
+        end
+    end
+
     private
         def permit_params
-            params.permit(:activity, :venue, :organization, :date_needed, :time, :requisitioner, :osaStatus, :adminStatus, :telesStatus)
+            params.permit(:activity, :venue, :org_id, :date_needed, :timefrom, :timeto, :osaStatus, :adviserStatus, :saoStatus, :facilityStatus)
         end
 end

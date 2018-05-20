@@ -9,6 +9,10 @@ gem 'font-awesome-rails', '4.3.0.0'
 gem 'devise'
 gem 'easy_roles'
 
+#pdf
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+
 #TImezone for windows
 gem 'tzinfo-data'
 
