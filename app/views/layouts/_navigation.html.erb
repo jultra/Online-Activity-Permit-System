@@ -48,6 +48,13 @@
                 <% end %>
             </li>
             <% if current_user && current_user.is_admin?%>
+                <li class="<%= is_active_controller('rooms') %>">
+                    <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Rooms</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level is_active_controller('admin/users')">
+                        <li class="<%= is_active_action('new') %>"><%= link_to "Add Room", rooms_new_path %> </li>
+                        <li class="<%= is_active_action('show') %>"><%= link_to "View Rooms", rooms_show_path %> </li>
+                    </ul>
+                </li>
                 <li class="<%= is_active_controller('admin/users') %>">
                     <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Users</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level is_active_controller('admin/users')">
@@ -55,6 +62,7 @@
                         <li class="<%= is_active_action('index') %>"><%= link_to "View Users", admin_users_path %> </li>
                     </ul>
                 </li>
+                
             <% elsif (current_user && current_user.is_student_org?) || (current_user && current_user.is_class?)%>
                 <li class="<%= is_active_controller('permits') %>">
                     <%= link_to permits_new_path do %>

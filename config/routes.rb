@@ -158,5 +158,11 @@ Myapp::Application.routes.draw do
   get "adviser/update"
   get "adviser/approve"
   get "adviser/reject"
+  get "rooms/new"
+  post "rooms/create"
+  get "rooms/show"
+  get "rooms/edit"
+  put "rooms/update"
+  get "rooms/destroy"
 
 end
