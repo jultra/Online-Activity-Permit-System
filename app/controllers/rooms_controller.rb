@@ -22,7 +22,6 @@ class RoomsController < ApplicationController
 
     def edit
         @room = Room.find(params[:id])
-        # @users = User.where(@room.in_charge == :id)
         @users = User.all
     end
 
