@@ -46,6 +46,16 @@ user.add_role 'adviser'
 user.save!
 
 user = User.new
+user.name = 'John'
+user.surname = 'Ultra'
+user.userName = 'john'
+user.email = 'teacher@gmail.com'
+user.password = 'qwerty'
+user.password_confirmation = 'qwerty'
+user.add_role 'adviser'
+user.save!
+
+user = User.new
 user.name = 'Ryan'
 user.surname = 'Daga'
 user.userName = 'rey'

@@ -5,17 +5,19 @@ class PermitsController < ApplicationController
 
     # We need to get current user ID so that it will only see its request
     def index
-        if current_user.is_adviser?
-            @permit = Permit.where(:adviserStatus => "pending")
+        if current_user.is_adviser? || current_user.is_facility?
+            @permit = Permit.where("adviserStatus= 'pending' OR facilityStatus= 'pending'")
         elsif current_user.is_osa?
             @permit = Permit.where(:osaStatus => "pending")
-        elsif current_user.is_facility?
-            @permit = Permit.where(:facilityStatus => "pending")
+        # elsif current_user.is_facility?
+        #     @permit = Permit.where(:facilityStatus => "pending")
         elsif current_user.is_sao?
             @permit = Permit.where(:saoStatus => "pending")
         elsif current_user.is_student_org?
             @permit = Permit.where(saoStatus: 'pending', org_id: current_user.id)
         end
+
+        @rooms = Room.all
     end
 
     def approved
@@ -48,6 +50,9 @@ class PermitsController < ApplicationController
 
     def new
         @permit = Permit.new
+        @rooms = Room.all
+        #### Query dapat an adviser tas facility
+        @users = User.all
     end
 
     def create
@@ -63,13 +68,15 @@ class PermitsController < ApplicationController
 
     def edit
         @permit = Permit.find(params[:id])
+        @users = User.all
+        @rooms = Room.all
     end
 
     def update
         @permit = Permit.find(params[:id])
         @permit.update(activity: params[:activity], venue: params[:venue], org_id: params[:org_id], date_needed: params[:date_needed],
                         timefrom: params[:timefrom], timeto: params[:timeto], osaStatus: params[:osaStatus], adviserStatus: params[:adviserStatus],
-                        facilityStatus: params[:facilityStatus], saoStatus: params[:saoStatus])
+                        adviser: params[:adviser], facilityStatus: params[:facilityStatus], saoStatus: params[:saoStatus])
         flash[:notice] = "You have successfully updated the permit"
         redirect_to permits_index_path(@permit)
     end
@@ -94,6 +101,6 @@ class PermitsController < ApplicationController
 
     private
         def permit_params
-            params.permit(:activity, :venue, :org_id, :date_needed, :timefrom, :timeto, :osaStatus, :adviserStatus, :saoStatus, :facilityStatus)
+            params.permit(:activity, :venue, :org_id, :date_needed, :timefrom, :timeto, :adviser, :osaStatus, :adviserStatus, :saoStatus, :facilityStatus)
         end
 end

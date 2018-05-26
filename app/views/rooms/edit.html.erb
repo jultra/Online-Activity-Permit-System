@@ -1,0 +1,19 @@
+<h1> EDIT ROOM </h1>
+
+<div class="wizard-big">
+<%= form_tag("update", method: "put") do %>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="form-group">
+                <%= label_tag(:room, "Room: ") %>
+                <%= text_field_tag :room, @room.room %>
+            </div>
+            <div class="form-group">
+                <%= label_tag(:in_charge, "Facility in Charge: ") %>
+                <%= select_tag(:in_charge, options_for_select(@users.collect{ |u| [u.name, u.id]}, @room.in_charge )) %>
+            </div>
+            <%= submit_tag("Submit") %>
+        </div>
+    </div>
+<% end %>
+</div>

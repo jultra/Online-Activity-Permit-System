@@ -9,14 +9,14 @@
                   <%= text_field_tag :activity, @permit.activity %>
               </div>
               <div class="form-group">
-                  <%= label_tag(:venue, "Venue: ") %>
-                  <%= text_field_tag :venue, @permit.venue %>
-              </div>
-             
-              <div class="form-group">
-                  <%= label_tag(:date_needed, "Date Needed: ") %>
-                  <%= text_field_tag :date_needed, @permit.date_needed %>
-              </div>
+                <%= label_tag(:venue, "Venue: ") %>
+                <%= select_tag(:venue, options_for_select(@rooms.collect{ |u| [u.room, u.id] }, @permit.venue)) %>
+            </div>
+            
+            <div class="form-group">
+                <%= label_tag(:adviser, "Adviser: ") %>
+                <%= select_tag(:adviser, options_for_select(@users.collect{ |u| [u.name, u.id] }, @permit.adviser)) %>
+            </div>
               <div class="form-group">
                   <%= label_tag(:time, "Time: ") %>
                   <%= text_field_tag :timefrom, @permit.timefrom %> - <%= text_field_tag :timefrom, @permit.timeto %>

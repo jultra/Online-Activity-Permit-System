@@ -1,0 +1,30 @@
+<h1> SHOW ROOMS </h1>
+
+<div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Room</th>
+                <th>Facility in Charge</th>
+               
+            </tr>
+            </thead>
+            
+            <tbody>
+            <% for post in @room %>
+            <tr>
+                <td><%= post.room %></td>
+                <%for user in @users %>
+                    <% if user.id == post.in_charge %>
+                    <td><%= user.name %> <%= user.surname %></td>
+                    <% end %>
+                <% end %>
+                <td><%= link_to "", rooms_edit_path(:id => post.id), class: "glyphicon glyphicon-pencil" %>
+                <%= link_to "", rooms_destroy_path(:id => post.id), class: "glyphicon glyphicon-trash" %></td>
+                
+            </tr>
+            <% end %>
+            </tbody>
+            
+        </table>
+    </div>

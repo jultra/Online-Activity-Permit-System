@@ -7,11 +7,17 @@
                 <%= label_tag(:activity, "Activity: ") %>
                 <%= text_field_tag(:activity) %>
             </div>
+
             <div class="form-group">
                 <%= label_tag(:venue, "Venue: ") %>
-                <%= text_field_tag(:venue) %>
+                <%= select_tag(:venue, options_for_select(@rooms.collect{ |u| [u.room, u.id] })) %>
             </div>
             
+            <div class="form-group">
+                <%= label_tag(:adviser, "Adviser: ") %>
+                <%= select_tag(:adviser, options_for_select(@users.collect{ |u| [u.name, u.id] })) %>
+            </div>
+
             <div class="form-group">
                 <%= label_tag(:date_needed, "Date Needed: ") %>
                 <%= date_field_tag(:date_needed) %>
