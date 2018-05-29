@@ -1,12 +1,14 @@
 class AdviserController < ApplicationController
     def approve
         @permit = Permit.find(params[:id])
-
+        @user = current_user
         if current_user.is_adviser? || current_user.is_facility?
-            if @permit.adviserStatus == "pending"
-                @permit.update(adviserStatus: "approved")
-            elsif @permit.facilityStatus == "pending"
-                @permit.update(facilityStatus: "approved")
+            if @user.authenticate(params[:password])
+                if @permit.adviserStatus == "pending"
+                    @permit.update(adviserStatus: "approved")
+                elsif @permit.facilityStatus == "pending"
+                    @permit.update(facilityStatus: "approved")
+                end
             end
         elsif current_user.is_osa?
             @permit.update(osaStatus: "approved")
