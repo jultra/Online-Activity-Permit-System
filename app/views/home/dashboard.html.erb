@@ -7,7 +7,7 @@
                 <h5>Pending Permits</h5>
             </div>
             <div class="ibox-content">
-                <h1 class="no-margins">0</h1>
+                <h1 class="no-margins"><%= @pending %></h1>
                 <div class="stat-percent font-bold text-success">0% <i class="fa fa-bolt"></i></div>
                 <small></small>
             </div>
@@ -20,7 +20,7 @@
                 <h5>Approved</h5>
             </div>
             <div class="ibox-content">
-                <h1 class="no-margins">0</h1>
+                <h1 class="no-margins"><%= @approved %></h1>
                 <div class="stat-percent font-bold text-info"><i class="fa fa-level-up"></i></div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                 <h5>Rejected</h5>
             </div>
             <div class="ibox-content">
-                <h1 class="no-margins">0</h1>
+                <h1 class="no-margins"><%= @rejected %></h1>
                 <div class="stat-percent font-bold text-navy"><i class="fa fa-level-up"></i></div>
             </div>
         </div>
@@ -130,7 +130,7 @@
                     <td><span class="pie">3,1</span><%= post.saoStatus %></td>
                     <td><%= link_to "PDF", permits_pdf_path(:id => post.id, :format=>'pdf'), class: "btn btn-info" %></td>
                 <% end %>
-                
+
                 <td><%= link_to "", permits_edit_path(:id => post.id), class: "glyphicon glyphicon-pencil" %>
                 <%= link_to "", permits_destroy_path(:id => post.id), class: "glyphicon glyphicon-trash" %>
 
