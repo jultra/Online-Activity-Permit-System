@@ -1,24 +1,25 @@
 class AdviserController < ApplicationController
     def approve
         @permit = Permit.find(params[:id])
-        @user = current_user
-        if current_user.is_adviser? || current_user.is_facility?
-            if @user.authenticate(params[:password])
+        @user = User.find_by_email(current_user.email)
+        if @user.valid_password?(params[:password])
+            if current_user.is_adviser? || current_user.is_facility?
                 if @permit.adviserStatus == "pending"
                     @permit.update(adviserStatus: "approved")
                 elsif @permit.facilityStatus == "pending"
                     @permit.update(facilityStatus: "approved")
                 end
+            elsif current_user.is_osa?
+                @permit.update(osaStatus: "approved")
+            # elsif current_user.is_facility?
+            #     @permit.update(facilityStatus: "approved")
+            elsif current_user.is_sao?
+                @permit.update(saoStatus: "approved")
             end
-        elsif current_user.is_osa?
-            @permit.update(osaStatus: "approved")
-        # elsif current_user.is_facility?
-        #     @permit.update(facilityStatus: "approved")
-        elsif current_user.is_sao?
-            @permit.update(saoStatus: "approved")
+            flash[:notice] = "You have successfully approved the permit"
+        else
+            flash[:notice] = "Incorrect Password"
         end
-        
-        flash[:notice] = "You have successfully approved the permit"
         redirect_to permits_index_path(@permit)
     end
 
