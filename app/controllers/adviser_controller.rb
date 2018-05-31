@@ -15,6 +15,7 @@ class AdviserController < ApplicationController
             #     @permit.update(facilityStatus: "approved")
             elsif current_user.is_sao?
                 @permit.update(saoStatus: "approved")
+                create_hash
             end
             flash[:notice] = "You have successfully approved the permit"
         else
@@ -59,5 +60,11 @@ class AdviserController < ApplicationController
         
         flash[:notice] = "You have successfully rejected the permit"
         redirect_to permits_index_path(@permit)
+    end
+    
+    def create_hash
+        o = [('a'..'z'), ('A'..'Z')].map(&:to_a).flatten
+        rand_string = (0...50).map { o[rand(o.length)] }.join
+        @permit.key = @permit.venue + rand_string
     end
 end
