@@ -30,8 +30,10 @@ class PermitsController < ApplicationController
         elsif current_user.is_sao?
             @permit = Permit.where(:saoStatus => "approved")
         elsif current_user.is_student_org?
-            @permit = Permit.where(:saoStatus => "approved")
+            @permit = Permit.where(saoStatus: 'approved', org_id: current_user.id)
         end
+
+        @rooms = Room.all
     end
 
     def rejected
@@ -44,8 +46,10 @@ class PermitsController < ApplicationController
         elsif current_user.is_sao?
             @permit = Permit.where(:saoStatus => "rejected")
         elsif current_user.is_student_org?
-            @permit = Permit.where(:saoStatus => "rejected")
+            @permit = Permit.where(saoStatus: 'rejected', org_id: current_user.id)
         end
+
+        @rooms = Room.all
     end
 
     def new

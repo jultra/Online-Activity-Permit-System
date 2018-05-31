@@ -52,7 +52,11 @@
             <% for post in @permit %>
             <tr>
                 <td><%= post.activity %></td>
-                <td><%= post.venue %></td>
+                <% for room in @rooms %>
+                    <% if post.venue == room.id %>
+                        <td><%= room.room %></td>
+                    <% end %>
+                <% end %>
                 <td><%= post.date_needed %></td>
                 <td><%= post.timefrom %> - <%= post.timefrom %></td>
                 <% if post.adviserStatus == "pending" %>
