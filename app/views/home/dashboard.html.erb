@@ -96,7 +96,6 @@
                 <% end %>
                 <td><%= post.date_needed %></td>
                 <td><%= post.timefrom %> - <%= post.timeto %></td>
-                
                 <% if post.adviserStatus == "pending" %>
                     <td>Adviser</td>
                     <td><span class="pie">1,4</span><%= post.adviserStatus %></td>
@@ -115,7 +114,7 @@
                     <td>Facility in Charge</td>
                     <td><span class="pie">4,4</span><%= post.facilityStatus %></td>
                     <td><% for room in @rooms %>
-                    <% if  current_user.id == room.in_charge && room.id == post.venue %>
+                    <<% if room.id == post.venue && current_user.id == room.in_charge %>
                     <a href="#" class="glyphicon glyphicon-ok" data-toggle="modal" data-target="#facilityModal"></a>
                     <a href="#" class="glyphicon glyphicon-remove" data-toggle="modal" data-target="#facilityModal"></a>
                     <% end %>
@@ -127,8 +126,12 @@
                     <a href="#" class="glyphicon glyphicon-ok" data-toggle="modal" data-target="#saoModal"></a>
                     <a href="#" class="glyphicon glyphicon-remove" data-toggle="modal" data-target="#adviserModal"></a>
                     <% end %></td>
-                
+                <%elsif post.saoStatus == "approved" %>
+                    <td>Ready to use</td>
+                    <td><span class="pie">3,1</span><%= post.saoStatus %></td>
+                    <td><%= link_to "PDF", permits_pdf_path(:id => post.id, :format=>'pdf'), class: "btn btn-info" %></td>
                 <% end %>
+                
                 <td><%= link_to "", permits_edit_path(:id => post.id), class: "glyphicon glyphicon-pencil" %>
                 <%= link_to "", permits_destroy_path(:id => post.id), class: "glyphicon glyphicon-trash" %>
 
