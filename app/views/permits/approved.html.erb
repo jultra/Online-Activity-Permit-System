@@ -72,11 +72,7 @@
                 <% end %>
 
                 <% if current_user.is_adviser? %>
-                    <td><%= post.adviserStatus %></td>
-                    <img src="200px-UPVisayas.png">
-                    #added link for editing PDF
-                    <td><%= link_to "PDF", permits_pdf_path(:id => post.id, :format=>'pdf'), class: "btn btn-info" %></td>
-                    #end of added link                
+                    <td><%= post.adviserStatus %></td>        
                 <% elsif current_user.is_osa? %>
                     <td><%= post.osaStatus %></td>
                 <% elsif current_user.is_facility? %>
