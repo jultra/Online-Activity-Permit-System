@@ -9,6 +9,10 @@
                 <%= text_field_tag(:room) %>
             </div>
             <div class="form-group">
+                <%= label_tag(:code, "Room Code: ") %>
+                <%= text_field_tag(:code) %>
+            </div>
+            <div class="form-group">
                 <%= label_tag(:in_charge, "Facility in Charge: ") %>
                 <%= select_tag(:in_charge, options_for_select(@users.collect{ |u| [u.name, u.id] })) %>
             </div>
