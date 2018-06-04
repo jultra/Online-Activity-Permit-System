@@ -79,7 +79,20 @@
                 <th>Time</th>
                 <th>Current Approving Personnel </th>
                 <th>Status </th>
-                <th>Cancel</th>
+                
+                <%if current_user.has_role? 'admin'%>
+                    <th></th>
+                    <th>Edit</th>
+                <%elsif current_user.has_role? 'student_org'%>
+                    <th></th>
+                    <th>Edit</th>
+                <%elsif current_user.has_role? 'class'%>
+                    <th></th>
+                    <th>Edit</th>
+                <%else%>
+                    <th>Action</th>
+                    <th>Edit</th>
+                <%end%>
             </tr>
             </thead>
             
