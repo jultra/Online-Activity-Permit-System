@@ -22,8 +22,8 @@
         <p style="text-align: left;">Date: <%= @permit.date_needed %></p>
         <p style="text-align: left;">Time: <%= @permit.timefrom %> - <%= @permit.timeto %></p>
         <p style="text-align: left;">Equipment, furniture, etc. needed: </p>
-        <p style="text-align: left;">Requisitioner: </p>
-        <p style="text-align: left;">Adviser: </p>
+        <p style="text-align: left;">Requisitioner: <%= @permit.org_id %></p>
+        <p style="text-align: left;">Adviser: <%= @permit.adviser %></p>
         <p style="text-align: left;">Facility-In-Charge: </p>
     </div>
     

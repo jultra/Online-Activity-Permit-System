@@ -5,6 +5,7 @@ class CreatePermits < ActiveRecord::Migration
       t.integer :venue
       t.integer :org_id
       t.string :date_needed
+      t.string :date_end
       t.string :timefrom 
       t.string :timeto
       t.integer :adviser
