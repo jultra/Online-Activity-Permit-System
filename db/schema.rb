@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20180531085801) do
     t.integer  "venue"
     t.integer  "org_id"
     t.string   "date_needed"
+    t.string   "date_end"
     t.string   "timefrom"
     t.string   "timeto"
     t.integer  "adviser"
