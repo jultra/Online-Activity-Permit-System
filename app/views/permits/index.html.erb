@@ -56,7 +56,7 @@
                         <td><%= room.room %></td>
                     <% end %>
                 <% end %>
-                <td><%= post.date_needed %></td>
+                <td><%= post.date_needed %> - <%= post.date_end %></td></td>
                 <td><%= post.timefrom %> - <%= post.timeto %></td>
                 <% if post.adviserStatus == "pending" %>
                     <td>Adviser</td>

@@ -105,6 +105,6 @@ class PermitsController < ApplicationController
 
     private
         def permit_params
-            params.permit(:activity, :venue, :org_id, :date_needed, :timefrom, :timeto, :adviser, :osaStatus, :adviserStatus, :saoStatus, :facilityStatus)
+            params.permit(:activity, :venue, :org_id, :date_needed, :date_end, :timefrom, :timeto, :adviser, :osaStatus, :adviserStatus, :saoStatus, :facilityStatus)
         end
 end
