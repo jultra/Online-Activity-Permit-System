@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180525141934) do
+ActiveRecord::Schema.define(version: 20180531085801) do
 
   create_table "permits", force: :cascade do |t|
     t.string   "activity"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20180525141934) do
     t.string   "facilityStatus"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.string   "key"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -34,6 +35,7 @@ ActiveRecord::Schema.define(version: 20180525141934) do
     t.integer  "in_charge"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "code"
   end
 
   create_table "users", force: :cascade do |t|

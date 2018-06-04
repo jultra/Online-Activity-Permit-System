@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
     query = "#{self.table_name}.roles LIKE " + ['\'%',r,'%\''].join
     where(query)
   }
+
 end

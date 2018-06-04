@@ -35,6 +35,8 @@ class Admin::UsersController < ApplicationController
             user.add_role 'sao'
         end
         user.save!
+
+        @users = User.all
     end
     
     def studentOrgs
@@ -70,4 +72,13 @@ class Admin::UsersController < ApplicationController
         
         
     end
+    
+    def self.authenticate(password)
+        if user.find_by_password(password)#match_password(password)
+            return true
+        else
+            return false
+        end 
+    end
+  
 end

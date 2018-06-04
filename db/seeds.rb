@@ -35,6 +35,7 @@ user.password_confirmation = 'qwerty'
 user.add_role 'student_org'
 user.save!
 
+
 user = User.new
 user.name = 'Yuno'
 user.surname = 'Romero'
