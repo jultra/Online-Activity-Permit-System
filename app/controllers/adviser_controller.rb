@@ -21,45 +21,50 @@ class AdviserController < ApplicationController
         else
             flash[:notice] = "Incorrect Password"
         end
-        redirect_to permits_index_path(@permit)
+        redirect_to root_path
     end
 
     def reject
         @permit = Permit.find(params[:id])
-
-        if @permit.adviserStatus == "pending"
-            @permit.update(adviserStatus: "rejected")
-            @permit.update(osaStatus: "rejected")
-            @permit.update(facilityStatus: "rejected")
-            @permit.update(saoStatus: "rejected")
-        elsif @permit.osaStatus == "pending"
-            @permit.update(osaStatus: "rejected")
-            @permit.update(facilityStatus: "rejected")
-            @permit.update(saoStatus: "rejected")
-        elsif @permit.facilityStatus == "pending"
-            @permit.update(facilityStatus: "rejected")
-            @permit.update(saoStatus: "rejected")
-        elsif @permit.saoStatus == "pending"
-            @permit.update(saoStatus: "rejected")
+         @user = User.find_by_email(current_user.email)
+        if @user.valid_password?(params[:password])
+            if @permit.adviserStatus == "pending"
+                @permit.update(adviserStatus: "rejected")
+                @permit.update(osaStatus: "rejected")
+                @permit.update(facilityStatus: "rejected")
+                @permit.update(saoStatus: "rejected")
+            elsif @permit.osaStatus == "pending"
+                @permit.update(osaStatus: "rejected")
+                @permit.update(facilityStatus: "rejected")
+                @permit.update(saoStatus: "rejected")
+            elsif @permit.facilityStatus == "pending"
+                @permit.update(facilityStatus: "rejected")
+                @permit.update(saoStatus: "rejected")
+            elsif @permit.saoStatus == "pending"
+                @permit.update(saoStatus: "rejected")
+            end
+            # if current_user.is_adviser?
+            #     @permit.update(adviserStatus: "rejected")
+            #     @permit.update(osaStatus: "rejected")
+            #     @permit.update(facilityStatus: "rejected")
+            #     @permit.update(saoStatus: "rejected")
+            # elsif current_user.is_osa?
+            #     @permit.update(osaStatus: "rejected")
+            #     @permit.update(facilityStatus: "rejected")
+            #     @permit.update(saoStatus: "rejected")
+            # elsif current_user.is_facility?
+            #     @permit.update(facilityStatus: "rejected")
+            #     @permit.update(saoStatus: "rejected")
+            # elsif current_user.is_sao?
+            #     @permit.update(saoStatus: "rejected")
+            # end
+            
+            flash[:notice] = "You have successfully rejected the permit"
+        else
+            flash[:notice] = "Incorrect Password"
         end
-        # if current_user.is_adviser?
-        #     @permit.update(adviserStatus: "rejected")
-        #     @permit.update(osaStatus: "rejected")
-        #     @permit.update(facilityStatus: "rejected")
-        #     @permit.update(saoStatus: "rejected")
-        # elsif current_user.is_osa?
-        #     @permit.update(osaStatus: "rejected")
-        #     @permit.update(facilityStatus: "rejected")
-        #     @permit.update(saoStatus: "rejected")
-        # elsif current_user.is_facility?
-        #     @permit.update(facilityStatus: "rejected")
-        #     @permit.update(saoStatus: "rejected")
-        # elsif current_user.is_sao?
-        #     @permit.update(saoStatus: "rejected")
-        # end
+            redirect_to root_path
         
-        flash[:notice] = "You have successfully rejected the permit"
-        redirect_to permits_index_path(@permit)
     end
     
     def create_hash
