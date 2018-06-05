@@ -16,7 +16,7 @@
                 <%= label_tag(:in_charge, "Facility in Charge: ") %>
                 <%= select_tag(:in_charge, options_for_select(@users.collect{ |u| [u.name, u.id] })) %>
             </div>
-            <%= submit_tag("Submit") %>
+            <%= submit_tag("Submit", :class=>"btn btn-success") %>
         </div>
     </div>
 <% end %>

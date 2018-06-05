@@ -34,7 +34,8 @@
             <%= hidden_field_tag 'adviserStatus', 'pending'  %>
             <%= hidden_field_tag 'saoStatus', 'pending'  %>
             <%= hidden_field_tag 'facilityStatus', 'pending'  %>
-                <%= submit_tag("Submit") %>
+                
+            <%= submit_tag("Submit", :class=>"btn btn-success") %>
         </div>
     </div>
 <% end %>
