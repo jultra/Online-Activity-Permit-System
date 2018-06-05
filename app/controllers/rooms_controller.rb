@@ -1,7 +1,8 @@
 class RoomsController < ApplicationController
     def new
         @room = Room.new
-        @users = User.all   ##### query only the facilities
+        # @users = User.all   ##### query only the facilities
+        @users = User.with_role('adviser')
     end
 
     def create
