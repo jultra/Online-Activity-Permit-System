@@ -63,8 +63,14 @@ class AdviserController < ApplicationController
     end
     
     def create_hash
+        @permit = Permit.find(params[:id])
+        
         o = [('a'..'z'), ('A'..'Z')].map(&:to_a).flatten
         rand_string = (0...50).map { o[rand(o.length)] }.join
-        @permit.key = @permit.venue + rand_string
+        @permit.key = (@permit.venue).to_s + rand_string
+       
+        key = @permit.key + rand_string
+
+        @permit.update(key: key)
     end
 end
