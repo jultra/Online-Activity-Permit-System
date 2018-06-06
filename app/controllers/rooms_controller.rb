@@ -2,7 +2,7 @@ class RoomsController < ApplicationController
     def new
         @room = Room.new
         # @users = User.all   ##### query only the facilities
-        @users = User.with_role('adviser')
+        @users = User.with_role('employee')
     end
 
     def create
@@ -42,6 +42,6 @@ class RoomsController < ApplicationController
 
     private
         def room_params
-            params.permit(:room, :in_charge)
+            params.permit(:room, :in_charge, :code)
         end
 end

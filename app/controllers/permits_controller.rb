@@ -13,7 +13,8 @@ class PermitsController < ApplicationController
         #     @permit = Permit.where(:facilityStatus => "pending")
         elsif current_user.is_sao?
             @permit = Permit.where(:saoStatus => "pending")
-        elsif current_user.is_student_org?
+
+        elsif current_user.is_student_org? || current_user.is_class? || current_user.is_employee?
             @permit = Permit.where(saoStatus: 'pending', org_id: current_user.id)
         end
 
@@ -29,7 +30,9 @@ class PermitsController < ApplicationController
             @permit = Permit.where(:facilityStatus => "approved")
         elsif current_user.is_sao?
             @permit = Permit.where(:saoStatus => "approved")
-        elsif current_user.is_student_org?
+
+        elsif current_user.is_student_org? || current_user.is_class? || current_user.is_employee?
+
             @permit = Permit.where(saoStatus: 'approved', org_id: current_user.id)
         end
 
@@ -45,7 +48,9 @@ class PermitsController < ApplicationController
             @permit = Permit.where(:facilityStatus => "rejected")
         elsif current_user.is_sao?
             @permit = Permit.where(:saoStatus => "rejected")
-        elsif current_user.is_student_org?
+
+        elsif current_user.is_student_org? || current_user.is_class? || current_user.is_employee?
+
             @permit = Permit.where(saoStatus: 'rejected', org_id: current_user.id)
         end
 
@@ -93,7 +98,14 @@ class PermitsController < ApplicationController
     end
 
     def pdf
+      
         @permit = Permit.find(params[:id])
+        @room = Room.find(@permit.venue)
+        @user = User.find(@room.in_charge)
+        @requisitioner = User.find(@permit.org_id)
+
+        # @permit=@permit.joins(:user)
+        # #@permit = Permit.find(params[:id])
         respond_to do |format|
         format.html
         format.pdf do
@@ -105,6 +117,6 @@ class PermitsController < ApplicationController
 
     private
         def permit_params
-            params.permit(:activity, :venue, :org_id, :date_needed, :timefrom, :timeto, :adviser, :osaStatus, :adviserStatus, :saoStatus, :facilityStatus)
+            params.permit(:activity, :venue, :org_id, :date_needed, :date_end, :timefrom, :timeto, :adviser, :osaStatus, :adviserStatus, :saoStatus, :facilityStatus)
         end
 end

@@ -19,21 +19,22 @@ class Admin::UsersController < ApplicationController
         user.address = params[:address]
         user.password = params[:password]
         
-        if params[:user_type]=="student_org"
-            user.add_role 'student_org'
-        elsif params[:user_type]=="class"
-            user.add_role 'class'
-        elsif params[:user_type]=="adviser"
-            user.add_role 'adviser'
-        elsif params[:user_type]=="employee"
-            user.add_role 'employee'
-        elsif params[:user_type]=="facility"
-            user.add_role 'facility'
-        elsif params[:user_type]=="osa"
-            user.add_role 'osa'
-        elsif params[:user_type]=="sao"
-            user.add_role 'sao'
-        end
+        user.roles = params[:user_type]
+    #    if params[:user_type]=="student_org"
+    #        user.add_role 'student_org'
+    #    elsif params[:user_type]=="class"
+    #        user.add_role 'class'
+    #    elsif params[:user_type]=="adviser"
+    #        user.add_role 'adviser'
+    #    elsif params[:user_type]=="employee"
+    #        user.add_role 'employee'
+    #    elsif params[:user_type]=="facility"
+    #        user.add_role 'facility'
+    #    elsif params[:user_type]=="osa"
+    #        user.add_role 'osa'
+    #   elsif params[:user_type]=="sao"
+    #        user.add_role 'sao'
+    #    end
         user.save!
 
         @users = User.all

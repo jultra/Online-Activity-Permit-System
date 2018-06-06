@@ -68,9 +68,17 @@ class AdviserController < ApplicationController
     end
     
     def create_hash
+        @permit = Permit.find(params[:id])
+        
         o = [('a'..'z'), ('A'..'Z')].map(&:to_a).flatten
         rand_string = (0...50).map { o[rand(o.length)] }.join
-        @room = Room.find_by_room(@permit.venue)
-        @permit.key = @room.code + rand_string
+
+        @room = Room.find(@permit.venue)
+        @key = @room.code
+        # @room = Room.find_by_room(id: @permit.venue)
+        # room = Room.where(id: @permit.venue).select('code').uniq
+        @permit.key = @key + rand_string
+        # @permit.key = (@permit.venue).to_s + rand_string'
+        @permit.update(key: @permit.key)
     end
 end
