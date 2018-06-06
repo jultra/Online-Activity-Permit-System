@@ -18,13 +18,13 @@
         <p style="text-align: center; font-size:20px"><b>ACTIVITY PERMIT</b></p>
         <p style="text-align: left;">CN: </p>
         <p style="text-align: left;">Activity: <%= @permit.activity %></p>
-        <p style="text-align: left;">Venue: <%= @permit.venue %></p>
-        <p style="text-align: left;">Date: <%= @permit.date_needed %></p>
+        <p style="text-align: left;">Venue: <%= @room.room %></p>
+        <p style="text-align: left;">Date: <%= @permit.date_needed %> - <%= @permit.date_end %> </p>
         <p style="text-align: left;">Time: <%= @permit.timefrom %> - <%= @permit.timeto %></p>
         <p style="text-align: left;">Equipment, furniture, etc. needed: </p>
-        <p style="text-align: left;">Requisitioner: </p>
-        <p style="text-align: left;">Adviser: </p>
-        <p style="text-align: left;">Facility-In-Charge: </p>
+        <p style="text-align: left;">Requisitioner:  <%= @requisitioner.name %></p>
+        <p style="text-align: left;">Adviser: <%= @user.name %></p>
+        <p style="text-align: left;">Facility-In-Charge: <%= @user.name %> </p>
         <p style="text-align: left;">KEY: <%= @permit.key %>  </p>
     </div>
     
