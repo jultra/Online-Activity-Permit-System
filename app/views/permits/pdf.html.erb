@@ -7,11 +7,14 @@
   </head>
   <body onload='number_pages'>
    
-     <div id="header">
-        <h5 style="text-align: center; margin-bottom:5px">University of the Philippines</h5>
-        <h5 style="text-align: center; margin-bottom:5px; margin-top:5px">TACLOBAN COLLEGE</h5>  
-        <%= wicked_pdf_image_tag 'logo.png', width: 64, height:64 %>
-        
+     <div>
+     
+    <div>
+        <div id="header">
+            <h5 style="text-align: center; margin-bottom:5px">University of the Philippines</h5>
+            <h5 style="text-align: center; margin-bottom:5px; margin-top:5px">TACLOBAN COLLEGE</h5>  
+            <%= wicked_pdf_image_tag 'logo.png', width: 64, height:64 %>
+      
     </div>
     <div id="content">
         <p style="text-align: left;">Date Filled: __________________________</p>
@@ -26,6 +29,7 @@
         <p style="text-align: left;">Adviser: <%= @user.name %></p>
         <p style="text-align: left;">Facility-In-Charge: <%= @user.name %> </p>
         <p style="text-align: left;">KEY: <%= @permit.key %>  </p>
+
     </div>
     
   </body>
