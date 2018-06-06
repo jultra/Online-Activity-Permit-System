@@ -44,6 +44,7 @@ user.email = 'adviser@gmail.com'
 user.password = 'qwerty'
 user.password_confirmation = 'qwerty'
 user.add_role 'adviser'
+user.add_role 'employee'
 user.save!
 
 user = User.new
@@ -54,6 +55,7 @@ user.email = 'teacher@gmail.com'
 user.password = 'qwerty'
 user.password_confirmation = 'qwerty'
 user.add_role 'adviser'
+user.add_role 'employee'
 user.save!
 
 user = User.new
@@ -64,15 +66,6 @@ user.email = 'facility@gmail.com'
 user.password = 'qwerty'
 user.password_confirmation = 'qwerty'
 user.add_role 'facility'
-user.save!
-
-user = User.new
-user.name = 'John'
-user.surname = 'Ultra'
-user.userName = 'juan'
-user.email = 'employee@gmail.com'
-user.password = 'qwerty'
-user.password_confirmation = 'qwerty'
 user.add_role 'employee'
 user.save!
 
@@ -84,6 +77,7 @@ user.email = 'osa@gmail.com'
 user.password = 'qwerty'
 user.password_confirmation = 'qwerty'
 user.add_role 'osa'
+user.add_role 'employee'
 user.save!
 
 user = User.new
@@ -104,4 +98,5 @@ user.email = 'sao@gmail.com'
 user.password = 'qwerty'
 user.password_confirmation = 'qwerty'
 user.add_role 'sao'
+user.add_role 'employee'
 user.save!

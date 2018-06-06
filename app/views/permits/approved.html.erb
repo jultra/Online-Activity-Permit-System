@@ -42,7 +42,6 @@
                 <th>Time</th>
                 <th>Current Approving Personnel </th>
                 <th>Status </th>
-                <th>Action</th>
             </tr>
             </thead>
             
@@ -84,8 +83,7 @@
                     <td><%= post.saoStatus %></td>
                 <% end %>
 
-                <td><%= link_to "", permits_edit_path(:id => post.id), class: "glyphicon glyphicon-pencil" %>
-                <%= link_to "", permits_destroy_path(:id => post.id), class: "glyphicon glyphicon-trash" %></td>
+
                 
             </tr>
             <% end %>

@@ -48,13 +48,16 @@
                             </div>
                         </div><br/><br/>
                         
+                        <%if (!current_user.is_employee?)%>
                         <div class="form-group">
-                            <%= label_tag(:adviser, "Adviser: ", :class=>"col-sm-2 control-label") %>
-                
-                            <div class="col-sm-10">
-                                <%= select_tag(:adviser, options_for_select(@users.collect{ |u| [u.name, u.id] }), :class=>"form-control m-b") %>
-                            </div>
+                            
+                                <%= label_tag(:adviser, "Adviser: ", :class=>"col-sm-2 control-label") %>
+                                <div class="col-sm-10">
+                                    <%= select_tag(:adviser, options_for_select(@users.collect{ |u| [u.name, u.id] }), :class=>"form-control m-b") %>
+                                </div>
+                            
                         </div><br/><br/>
+                        <%end%>
                 
                         <div class="form-group" id="data_5">
                             <%= label_tag(:date_needed, "Date Needed: ", :class=>"col-sm-2 control-label") %>
@@ -75,11 +78,19 @@
                         
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
-                                <%= hidden_field_tag :org_id, current_user.id  %>
-                                <%= hidden_field_tag 'osaStatus', 'pending'  %>
-                                <%= hidden_field_tag 'adviserStatus', 'pending'  %>
-                                <%= hidden_field_tag 'saoStatus', 'pending'  %>
-                                <%= hidden_field_tag 'facilityStatus', 'pending'  %>
+                                <%if (current_user && !current_user.is_employee?)%>
+                                    <%= hidden_field_tag :org_id, current_user.id  %>
+                                    <%= hidden_field_tag 'osaStatus', 'pending'  %>
+                                    <%= hidden_field_tag 'adviserStatus', 'pending'  %>
+                                    <%= hidden_field_tag 'saoStatus', 'pending'  %>
+                                    <%= hidden_field_tag 'facilityStatus', 'pending'  %>
+                                <% else%>
+                                    <%= hidden_field_tag :org_id, current_user.id  %>
+                                    <%= hidden_field_tag 'osaStatus', 'approved'  %>
+                                    <%= hidden_field_tag 'adviserStatus', 'approved'  %>
+                                    <%= hidden_field_tag 'saoStatus', 'pending'  %>
+                                    <%= hidden_field_tag 'facilityStatus', 'approved'  %>
+                                <%end%>
                                 <%= submit_tag("Submit", :class=>"btn btn-primary") %>
                             </div>
                         </div>

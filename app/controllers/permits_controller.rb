@@ -93,7 +93,10 @@ class PermitsController < ApplicationController
     end
 
     def pdf
+      
         @permit = Permit.find(params[:id])
+        @permit=@permit.joins(:user)
+        #@permit = Permit.find(params[:id])
         respond_to do |format|
         format.html
         format.pdf do
