@@ -70,6 +70,7 @@ class AdviserController < ApplicationController
     def create_hash
         o = [('a'..'z'), ('A'..'Z')].map(&:to_a).flatten
         rand_string = (0...50).map { o[rand(o.length)] }.join
-        @permit.key = @permit.venue + rand_string
+        @room = Room.find_by_room(@permit.venue)
+        @permit.key = @room.code + rand_string
     end
 end
