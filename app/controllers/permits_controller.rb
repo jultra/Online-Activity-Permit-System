@@ -100,8 +100,12 @@ class PermitsController < ApplicationController
     def pdf
       
         @permit = Permit.find(params[:id])
-        @permit=@permit.joins(:user)
-        #@permit = Permit.find(params[:id])
+        @room = Room.find(@permit.venue)
+        @user = User.find(@room.in_charge)
+        @requisitioner = User.find(@permit.org_id)
+
+        # @permit=@permit.joins(:user)
+        # #@permit = Permit.find(params[:id])
         respond_to do |format|
         format.html
         format.pdf do
