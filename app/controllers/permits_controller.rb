@@ -13,6 +13,7 @@ class PermitsController < ApplicationController
         #     @permit = Permit.where(:facilityStatus => "pending")
         elsif current_user.is_sao?
             @permit = Permit.where(:saoStatus => "pending")
+
         elsif current_user.is_student_org? || current_user.is_class? || current_user.is_employee?
             @permit = Permit.where(saoStatus: 'pending', org_id: current_user.id)
         end
@@ -29,7 +30,9 @@ class PermitsController < ApplicationController
             @permit = Permit.where(:facilityStatus => "approved")
         elsif current_user.is_sao?
             @permit = Permit.where(:saoStatus => "approved")
-        elsif current_user.is_student_org? || current_user.is_class? 
+
+        elsif current_user.is_student_org? || current_user.is_class? || current_user.is_employee?
+
             @permit = Permit.where(saoStatus: 'approved', org_id: current_user.id)
         end
 
@@ -45,7 +48,9 @@ class PermitsController < ApplicationController
             @permit = Permit.where(:facilityStatus => "rejected")
         elsif current_user.is_sao?
             @permit = Permit.where(:saoStatus => "rejected")
-        elsif current_user.is_student_org? || current_user.is_class? 
+
+        elsif current_user.is_student_org? || current_user.is_class? || current_user.is_employee?
+
             @permit = Permit.where(saoStatus: 'rejected', org_id: current_user.id)
         end
 
