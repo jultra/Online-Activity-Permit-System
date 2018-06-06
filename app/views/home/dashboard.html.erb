@@ -82,16 +82,28 @@
                 
                 <%if current_user.has_role? 'admin'%>
                     <th></th>
-                    <th>Edit</th>
+                    
                 <%elsif current_user.has_role? 'student_org'%>
                     <th></th>
-                    <th>Edit</th>
+                    
                 <%elsif current_user.has_role? 'class'%>
                     <th></th>
-                    <th>Edit</th>
+                    
+                <%elsif current_user.has_role? 'adviser'%>
+                    <th>Action</th>
+                    
+                <%elsif current_user.has_role? 'osa'%>
+                    <th>Action</th>
+                    
+                <%elsif current_user.has_role? 'sao'%>
+                    <th>Action</th>
+                    
+                <%elsif current_user.has_role? 'employee'%>
+                    <th></th>
+                    
                 <%else%>
                     <th>Action</th>
-                    <th>Edit</th>
+                    
                 <%end%>
             </tr>
             </thead>
@@ -127,7 +139,7 @@
                     <td>Facility in Charge</td>
                     <td><span class="pie">4,4</span><%= post.facilityStatus %></td>
                     <td><% for room in @rooms %>
-                    <<% if room.id == post.venue && current_user.id == room.in_charge %>
+                    <% if room.id == post.venue && current_user.id == room.in_charge %>
                     <a href="#" class="glyphicon glyphicon-ok" data-toggle="modal" data-target="#facilityModal"></a>
                     <a href="#" class="glyphicon glyphicon-remove" data-toggle="modal" data-target="#facilityModal"></a>
                     <% end %>
@@ -145,9 +157,7 @@
                     <td><%= link_to "PDF", permits_pdf_path(:id => post.id, :format=>'pdf'), class: "btn btn-info" %></td>
                 <% end %>
 
-                <td><%= link_to "", permits_edit_path(:id => post.id), class: "glyphicon glyphicon-pencil" %>
-                <%= link_to "", permits_destroy_path(:id => post.id), class: "glyphicon glyphicon-trash" %>
-
+                
                 </td>
 
             </tr>

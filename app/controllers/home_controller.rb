@@ -48,7 +48,7 @@ class HomeController < ApplicationController
         @permitR = Permit.where(:saoStatus => "rejected")
         @rejected = @permitR.count
 
-    elsif current_user.is_student_org?
+    elsif current_user.is_student_org? || current_user.is_class? || current_user.is_employee?
         @permit = Permit.where(org_id: current_user.id, saoStatus: 'pending')
         @pending = @permit.count
     
