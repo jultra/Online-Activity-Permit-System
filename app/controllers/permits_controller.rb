@@ -6,7 +6,10 @@ class PermitsController < ApplicationController
     # We need to get current user ID so that it will only see its request
     def index
         if current_user.is_adviser? || current_user.is_facility?
-            @permit = Permit.where("adviserStatus= 'pending' OR facilityStatus= 'pending'")
+            # @permit = Permit.where("adviserStatus= 'pending' OR facilityStatus= 'pending'")
+            @adviser = Permit.where(adviserStatus: 'pending', adviser: current_user.id)  ## FOR THE ADVISER
+            @facility = Permit.where(facilityStatus: 'pending' ,venue: Room.where(in_charge: current_user))
+            @permit = (@adviser + @facility).uniq
         elsif current_user.is_osa?
             @permit = Permit.where(:osaStatus => "pending")
         # elsif current_user.is_facility?
@@ -84,7 +87,7 @@ class PermitsController < ApplicationController
     def update
         @permit = Permit.find(params[:id])
         @permit.update(activity: params[:activity], venue: params[:venue], org_id: params[:org_id], date_needed: params[:date_needed],
-                        timefrom: params[:timefrom], timeto: params[:timeto], osaStatus: params[:osaStatus], adviserStatus: params[:adviserStatus],
+                        timefrom: params[:timefrom], timeto: params[:timeto], equipments: params[:equipments], osaStatus: params[:osaStatus], adviserStatus: params[:adviserStatus],
                         adviser: params[:adviser], facilityStatus: params[:facilityStatus], saoStatus: params[:saoStatus])
         flash[:notice] = "You have successfully updated the permit"
         redirect_to permits_index_path(@permit)
@@ -115,8 +118,13 @@ class PermitsController < ApplicationController
         end
     end
 
+    def show
+        @permit = Permit.where(:saoStatus => "approved")
+        @rooms = Room.all
+    end
+
     private
         def permit_params
-            params.permit(:activity, :venue, :org_id, :date_needed, :date_end, :timefrom, :timeto, :adviser, :osaStatus, :adviserStatus, :saoStatus, :facilityStatus)
+            params.permit(:activity, :venue, :org_id, :date_needed, :date_end, :equipments, :timefrom, :timeto, :adviser, :osaStatus, :adviserStatus, :saoStatus, :facilityStatus)
         end
 end
