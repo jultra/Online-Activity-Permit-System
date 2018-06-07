@@ -118,6 +118,11 @@ class PermitsController < ApplicationController
         end
     end
 
+    def show
+        @permit = Permit.where(:saoStatus => "approved")
+        @rooms = Room.all
+    end
+
     private
         def permit_params
             params.permit(:activity, :venue, :org_id, :date_needed, :date_end, :equipments, :timefrom, :timeto, :adviser, :osaStatus, :adviserStatus, :saoStatus, :facilityStatus)
