@@ -21,6 +21,11 @@
                   <%= label_tag(:time, "Time: ") %>
                   <%= text_field_tag :timefrom, @permit.timefrom %> - <%= text_field_tag :timefrom, @permit.timeto %>
               </div>
+
+              <div class="form-group">
+                  <%= label_tag(:equipments, "Equipments: ") %>
+                  <%= text_field_tag :equipments, @permit.equipments %>
+              </div>
              
               <%  hidden_field_tag 'org_id', @permit.org_id %>
               <%= hidden_field_tag 'osaStatus', 'pending'  %>

@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20180531085801) do
     t.string   "date_end"
     t.string   "timefrom"
     t.string   "timeto"
+    t.string   "equipments"
     t.integer  "adviser"
     t.string   "osaStatus"
     t.string   "adviserStatus"
