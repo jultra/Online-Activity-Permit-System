@@ -58,6 +58,10 @@ class HomeController < ApplicationController
         @permitR = Permit.where(org_id: current_user.id, saoStatus: 'rejected')
         @rejected = @permitR.count
 
+    elsif current_user.is_guard?
+        @permit = Permit.where(saoStatus: 'approved')
+        @approved = @permit.count
+
     else
         @permit = Permit.all
     end

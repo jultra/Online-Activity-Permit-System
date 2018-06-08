@@ -132,7 +132,7 @@ class PermitsController < ApplicationController
     def update
         @permit = Permit.find(params[:id])
         @permit.update(activity: params[:activity], venue: params[:venue], org_id: params[:org_id], date_needed: params[:date_needed],
-                        timefrom: params[:timefrom], timeto: params[:timeto], osaStatus: params[:osaStatus], adviserStatus: params[:adviserStatus],
+                        timefrom: params[:timefrom], timeto: params[:timeto], equipments: params[:equipments], osaStatus: params[:osaStatus], adviserStatus: params[:adviserStatus],
                         adviser: params[:adviser], facilityStatus: params[:facilityStatus], saoStatus: params[:saoStatus])
         flash[:notice] = "You have successfully updated the permit"
         redirect_to permits_index_path(@permit)
@@ -163,8 +163,13 @@ class PermitsController < ApplicationController
         end
     end
 
+    def show
+        @permit = Permit.where(:saoStatus => "approved")
+        @rooms = Room.all
+    end
+
     private
         def permit_params
-            params.permit(:activity, :venue, :org_id, :date_needed, :date_end, :timefrom, :timeto, :adviser, :osaStatus, :adviserStatus, :saoStatus, :facilityStatus)
+            params.permit(:activity, :venue, :org_id, :date_needed, :date_end, :equipments, :timefrom, :timeto, :adviser, :osaStatus, :adviserStatus, :saoStatus, :facilityStatus)
         end
 end

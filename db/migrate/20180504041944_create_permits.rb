@@ -8,6 +8,7 @@ class CreatePermits < ActiveRecord::Migration
       t.string :date_end
       t.string :timefrom 
       t.string :timeto
+      t.string :equipments
       t.integer :adviser
       t.string :osaStatus
       t.string :adviserStatus

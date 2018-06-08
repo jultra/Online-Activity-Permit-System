@@ -28,6 +28,8 @@
                                 <span class="text-muted text-xs block">Facility-in-Charge <b class="caret"></b></span>
                             <% elsif current_user && current_user.is_employee?%>
                                 <span class="text-muted text-xs block">Employee<b class="caret"></b></span>
+                            <% elsif current_user && current_user.is_guard?%>
+                                <span class="text-muted text-xs block">Security Guard <b class="caret"></b></span>
                             <% end %>
                         </span>
                     </a>
@@ -43,11 +45,13 @@
                     AP+
                 </div>
             </li>
+
             <li class="<%= is_active_controller('home') %>">
                 <%= link_to root_path do %>
                 <i class="fa fa-th-large"></i> <span class="nav-label">Home</span>
                 <% end %>
             </li>
+            
             <% if current_user && current_user.is_admin?%>
                 <li class="<%= is_active_controller('rooms') %>">
                     <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Rooms</span><span class="fa arrow"></span></a>
