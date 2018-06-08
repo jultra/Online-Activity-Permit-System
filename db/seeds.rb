@@ -81,6 +81,16 @@ user.add_role 'employee'
 user.save!
 
 user = User.new
+user.name = 'Kuya'
+user.surname = 'Guard'
+user.userName = 'guard'
+user.email = 'guard@gmail.com'
+user.password = 'qwerty'
+user.password_confirmation = 'qwerty'
+user.add_role 'guard'
+user.save!
+
+user = User.new
 user.name = 'CMSC 128 - N'
 user.surname = '2017-2018'
 user.userName = '128-N'

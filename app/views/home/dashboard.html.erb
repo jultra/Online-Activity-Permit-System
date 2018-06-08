@@ -1,5 +1,6 @@
 <div class="wrapper wrapper-content">
 <div class="row">
+    <%if !current_user.has_role? 'guard'%>
     <div class="col-md-4">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
@@ -38,13 +39,20 @@
             </div>
         </div>
     </div>
+    <% end %>
 </div>
 <div class="row">
 
 <div class="col-lg-12">
 <div class="ibox float-e-margins">
 <div class="ibox-title">
-    <h5>Pending Activity Permits</h5>
+    <%if current_user.has_role? 'guard'%>
+        <h5><span class="label label-info pull-right"> <%= @approved %> </span> Approved Permits</h5>
+        
+    <% else %>
+        <h5>Pending Activity Permits</h5>
+    <% end %>
+    
     <div class="ibox-tools">
         <a class="collapse-link">
             <i class="fa fa-chevron-up"></i>
