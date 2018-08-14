@@ -11,13 +11,13 @@
      
     <div style = "border: solid; border-spacing: 10px;">
         <div id="header">
-            <h5 style="text-align: center; margin-bottom:5px">University of the Philippines</h5>
+            <h5 style="text-align: center; margin-bottom:5px">University of the Philippines Visayas</h5>
             <h5 style="text-align: center; margin-bottom:5px; margin-top:5px">TACLOBAN COLLEGE</h5>  
-            <%= wicked_pdf_image_tag 'logo.png', top: 30, left: 60, width: 64, height:64 %>
+            <h5 style="text-align: center"><%= wicked_pdf_image_tag 'logo.png', top: 30, left: 60, width: 64, height:64 %></h5>
         </div>
     
         <div id="content">
-            <p style="text-align: left; margin-left:5px">Date Filled: __________________________</p>
+            <p style="text-align: right; margin-left:5px">Date Filled: <u><%= @permit.created_at.strftime('%F') %></u></p>
             <p style="text-align: center; font-size:20px"><b>ACTIVITY PERMIT</b></p>
             <p style="text-align: left; margin-left:5px">CN: </p>
             <p style="text-align: left; margin-left:5px">Activity: <%= @permit.activity %></p>

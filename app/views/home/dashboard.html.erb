@@ -179,7 +179,6 @@
                 <%= password_field_tag :password, nil, class: "form-control" %>
                 <% if post %>
                 <%= hidden_field_tag :id, post.id %>
-                <h5> <%= post.id  %></h5>
                 <% end %>
                 <%= submit_tag "Approve", class: "btn btn-default btn-success btn-block"%>
             <% end %>
