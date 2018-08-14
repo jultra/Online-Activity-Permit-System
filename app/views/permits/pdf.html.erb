@@ -1,35 +1,36 @@
 <!doctype html>
 <html>
+  
   <head>
     <meta charset='utf-8' />
     <%= wicked_pdf_stylesheet_link_tag "pdf" -%>
     <%= wicked_pdf_javascript_include_tag "number_pages" %>
   </head>
+  
   <body onload='number_pages'>
-   
-     <div>
      
-    <div>
+    <div style = "border: solid; border-spacing: 10px;">
         <div id="header">
             <h5 style="text-align: center; margin-bottom:5px">University of the Philippines</h5>
             <h5 style="text-align: center; margin-bottom:5px; margin-top:5px">TACLOBAN COLLEGE</h5>  
-            <%= wicked_pdf_image_tag 'logo.png', width: 64, height:64 %>
-      
-    </div>
-    <div id="content">
-        <p style="text-align: left;">Date Filled: __________________________</p>
-        <p style="text-align: center; font-size:20px"><b>ACTIVITY PERMIT</b></p>
-        <p style="text-align: left;">CN: </p>
-        <p style="text-align: left;">Activity: <%= @permit.activity %></p>
-        <p style="text-align: left;">Venue: <%= @room.room %></p>
-        <p style="text-align: left;">Date: <%= @permit.date_needed %> - <%= @permit.date_end %> </p>
-        <p style="text-align: left;">Time: <%= @permit.timefrom %> - <%= @permit.timeto %></p>
-        <p style="text-align: left;">Equipment, furniture, etc. needed: <%= @permit.equipments %> </p>
-        <p style="text-align: left;">Requisitioner:  <%= @requisitioner.name %></p>
-        <p style="text-align: left;">Adviser: <%= @user.name %></p>
-        <p style="text-align: left;">Facility-In-Charge: <%= @user.name %> </p>
-        <p style="text-align: left;">KEY: <%= @permit.key %>  </p>
-
+            <%= wicked_pdf_image_tag 'logo.png', top: 30, left: 60, width: 64, height:64 %>
+        </div>
+    
+        <div id="content">
+            <p style="text-align: left; margin-left:5px">Date Filled: __________________________</p>
+            <p style="text-align: center; font-size:20px"><b>ACTIVITY PERMIT</b></p>
+            <p style="text-align: left; margin-left:5px">CN: </p>
+            <p style="text-align: left; margin-left:5px">Activity: <%= @permit.activity %></p>
+            <p style="text-align: left; margin-left:5px">Venue: <%= @room.room %></p>
+            <p style="text-align: left; margin-left:5px">Date: <%= @permit.date_needed %> - <%= @permit.date_end %> </p>
+            <p style="text-align: left; margin-left:5px">Time: <%= @permit.timefrom %> - <%= @permit.timeto %></p>
+            <p style="text-align: left; margin-left:5px">Equipment, furniture, etc. needed: <%= @permit.equipments %> </p>
+            <p style="text-align: left; margin-left:5px">Requisitioner:  <%= @requisitioner.name %></p>
+            <p style="text-align: left; margin-left:5px">Adviser: <%= @user.name %></p>
+            <p style="text-align: left; margin-left:5px">Facility-In-Charge: <%= @user.name %> </p>
+            <p style="text-align: left; margin-left:5px">KEY: <%= @permit.key %>  </p>
+        </div>
+    
     </div>
     
   </body>
