@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'zlib'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 ruby '2.3.4'
 gem 'rails', '4.2.6'
