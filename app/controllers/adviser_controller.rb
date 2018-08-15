@@ -77,7 +77,7 @@ class AdviserController < ApplicationController
         @key = @room.code
         # @room = Room.find_by_room(id: @permit.venue)
         # room = Room.where(id: @permit.venue).select('code').uniq
-        @permit.key = @key + rand_string
+        @permit.key = (@key + rand_string).truncate(30)
         # @permit.key = (@permit.venue).to_s + rand_string'
         @permit.update(key: @permit.key)
     end

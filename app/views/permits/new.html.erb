@@ -62,7 +62,7 @@
                         <div class="form-group" id="data_5">
                             <%= label_tag(:date_needed, "Date Needed: ", :class=>"col-sm-2 control-label") %>
                             <div class="input-daterange input-group" id="datepicker">
-                                <%= text_field_tag(:date_needed, "", :class=>"input-sm form-control") %>
+                                <%= text_field_tag(:date_needed, "", :id=>"date", :class=>"input-sm form-control", :data_provide=>"datepicker") %>
                                 <span class="input-group-addon">to</span>
                                 <%= text_field_tag(:date_end, "", :class=>"input-sm form-control") %>
                             </div>
@@ -114,6 +114,12 @@
 
 <script type="text/javascript">
 
+var date = new Date();
+date.setDate(date.getDate()+1);
+
+$('#date').datepicker({ 
+    startDate: date
+});
 
 $(function() {
 
