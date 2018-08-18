@@ -18,12 +18,7 @@
     <body>
         <!-- Skin configuration box -->
         <%= render 'layouts/skinconfig' %>
-        <% flash.each do |key, value| %>
-            <div class="alert alert-success alert-dismissable animated flipInX">
-                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-                Signed in successfully!
-            </div>
-        <% end %>
+        
     
         <div id="wrapper" class="<%= params[:controller] %>.<%= params[:action] %>">
             <%= render 'layouts/navigation' %>
@@ -42,6 +37,4 @@
         <%= yield :javascript %>
     
     </body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
 </html>

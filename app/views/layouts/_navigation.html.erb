@@ -20,14 +20,14 @@
                                 <span class="text-muted text-xs block">Class <b class="caret"></b></span>
                             <% elsif current_user && current_user.is_adviser?%>
                                 <span class="text-muted text-xs block">Adviser <b class="caret"></b></span>
-                            <% elsif current_user && current_user.is_employee?%>
-                                <span class="text-muted text-xs block">Employee<b class="caret"></b></span>
                             <% elsif current_user && current_user.is_osa?%>
                                 <span class="text-muted text-xs block">OSA Coordinator <b class="caret"></b></span>
                             <% elsif current_user && current_user.is_sao?%>
                                 <span class="text-muted text-xs block">SAO<b class="caret"></b></span>
                             <% elsif current_user && current_user.is_facility?%>
                                 <span class="text-muted text-xs block">Facility-in-Charge <b class="caret"></b></span>
+                            <% elsif current_user && current_user.is_employee?%>
+                                <span class="text-muted text-xs block">Employee<b class="caret"></b></span>
                             <% elsif current_user && current_user.is_guard?%>
                                 <span class="text-muted text-xs block">Security Guard <b class="caret"></b></span>
                             <% end %>

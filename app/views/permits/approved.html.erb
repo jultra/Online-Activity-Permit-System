@@ -55,7 +55,7 @@
                     <% end %>
                 <% end %>
                 <td><%= post.date_needed %></td>
-                <td><%= post.timefrom %> - <%= post.timefrom %></td>
+                <td><%= post.timefrom %> - <%= post.timeto %></td>
                 <% if post.adviserStatus == "pending" %>
                     <td>Adviser</td>
                 <% elsif post.osaStatus == "pending" %>
@@ -71,7 +71,6 @@
                 <% if current_user.is_adviser? %>
                     <td><%= post.adviserStatus %></td>
                     <!--added link for editing PDF-->
-                    <td><%= link_to "PDF", permits_pdf_path(:id => post.id, :format=>'pdf'), class: "btn btn-info" %></td>
                     <!--#end of added link-->                
                 <% elsif current_user.is_osa? %>
                     <td><%= post.osaStatus %></td>
