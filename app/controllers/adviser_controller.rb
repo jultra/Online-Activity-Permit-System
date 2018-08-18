@@ -26,7 +26,7 @@ class AdviserController < ApplicationController
 
     def reject
         @permit = Permit.find(params[:id])
-        S@user = User.find_by_email(current_user.email)
+        @user = User.find_by_email(current_user.email)
         if @user.valid_password?(params[:password])
             if @permit.adviserStatus == "pending"
                 @permit.update(adviserStatus: "rejected")
