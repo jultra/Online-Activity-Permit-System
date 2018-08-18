@@ -26,7 +26,7 @@ class AdviserController < ApplicationController
 
     def reject
         @permit = Permit.find(params[:id])
-        S@user = User.find_by_email(current_user.email)
+        @user = User.find_by_email(current_user.email)
         if @user.valid_password?(params[:password])
             if @permit.adviserStatus == "pending"
                 @permit.update(adviserStatus: "rejected")
@@ -77,16 +77,12 @@ class AdviserController < ApplicationController
         @key = @room.code
         # @room = Room.find_by_room(id: @permit.venue)
         # room = Room.where(id: @permit.venue).select('code').uniq
-<<<<<<< HEAD
-        @permit.key = (@key + rand_string).truncate(30)
-=======
         
         # @permit.key = @key + rand_string
         hashInput = @permit.date_needed + @permit.date_end + @permit.timefrom + @permit.timeto
         @permit.key = Zlib.crc32 hashInput
         @permit.key = @key + @permit.key
 
->>>>>>> master
         # @permit.key = (@permit.venue).to_s + rand_string'
         @permit.update(key: @permit.key)
     end
