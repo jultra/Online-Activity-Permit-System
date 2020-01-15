@@ -23,7 +23,9 @@ group :development, :test do
   gem 'sqlite3'
 end
 
-gem 'mysql2'
+group :production do
+  gem 'mysql2'
+end
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
