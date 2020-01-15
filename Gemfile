@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
+ruby '2.3.4'
 
 gem 'zlib'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-ruby '2.3.4'
 gem 'rails', '4.2.6'
 gem 'bootstrap-sass', '3.3.0.0'
 gem 'font-awesome-rails', '4.3.0.0'
