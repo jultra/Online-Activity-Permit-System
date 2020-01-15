@@ -154,7 +154,7 @@ GEM
     minitest (5.14.0)
     multi_json (1.14.1)
     multi_test (0.1.2)
-    mysql2 (0.5.3)
+    mysql2 (0.4.10)
     net-scp (2.0.0)
       net-ssh (>= 2.6.5, < 6.0.0)
     net-ssh (5.2.0)
@@ -308,7 +308,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy (= 2.4.3)
-  mysql2
+  mysql2 (~> 0.4.0)
   rack-test (= 0.6.3)
   rack_session_access (= 0.1.1)
   rails (= 4.2.6)
